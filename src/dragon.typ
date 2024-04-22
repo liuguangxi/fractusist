@@ -15,7 +15,7 @@
 
 // Generate dragon curve
 //
-// iterations: [1, 16]
+// iterations: [0, 16]
 // axiom: "FX"
 // rule set:
 //     "X" -> "X+YF+"
@@ -33,7 +33,7 @@
 // Returns:
 //     content: generated vector graphic
 #let dragon-curve(n, step-size: 10, stroke-style: black + 1pt, width: auto, height: auto, fit: "cover") = {
-  assert(type(n) == int and n >= 1 and n <= 16, message: "`n` should be in range [1, 16]")
+  assert(type(n) == int and n >= 0 and n <= 16, message: "`n` should be in range [0, 16]")
   assert(step-size > 0, message: "`step-size` should be positive")
 
   if stroke-style != none {stroke-style = stroke(stroke-style)}

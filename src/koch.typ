@@ -15,7 +15,7 @@
 
 // Generate Koch curve
 //
-// iterations: [1, 6]
+// iterations: [0, 6]
 // axiom: "F"
 // rule set:
 //     "F" -> "F-F++F-F"
@@ -32,7 +32,7 @@
 // Returns:
 //     content: generated vector graphic
 #let koch-curve(n, step-size: 10, stroke-style: black + 1pt, width: auto, height: auto, fit: "cover") = {
-  assert(type(n) == int and n >= 1 and n <= 6, message: "`n` should be in range [1, 6]")
+  assert(type(n) == int and n >= 0 and n <= 6, message: "`n` should be in range [0, 6]")
   assert(step-size > 0, message: "`step-size` should be positive")
 
   if stroke-style != none {stroke-style = stroke(stroke-style)}
@@ -79,7 +79,7 @@
 
 // Generate Koch snowflake
 //
-// iterations: [1, 6]
+// iterations: [0, 6]
 // axiom: "F++F++F"
 // rule set:
 //     "F" -> "F-F++F-F"
