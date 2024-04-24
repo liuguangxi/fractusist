@@ -16,11 +16,12 @@ The example below creates a dragon curve of the 12th iteration with the `dragon-
   #set page(width: auto, height: auto, margin: 0pt)
 
   #dragon-curve(
-    12, step-size: 6,
+    12,
+    step-size: 6,
     stroke-style: stroke(
-        paint: gradient.linear(..color.map.crest, angle: 45deg),
-        thickness: 3pt,
-        cap: "square"
+      paint: gradient.linear(..color.map.crest, angle: 45deg),
+      thickness: 3pt,
+      cap: "square"
     )
   )
   ```
