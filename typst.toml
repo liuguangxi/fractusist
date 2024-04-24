@@ -1,12 +1,12 @@
 [package]
-name = "fenxing"
+name = "fractusist"
 version = "0.1.0"
 entrypoint = "src/lib.typ"
 authors = ["Guangxi Liu <https://github.com/liuguangxi>"]
 license = "MIT"
 description = "Create a variety of wonderful fractals in Typst."
-repository = "https://github.com/liuguangxi/fenxing"
-keywords = ["fractal", "L-system", "dragon", "Hilbert", "Koch"]
+repository = "https://github.com/liuguangxi/fractusist"
+keywords = ["fractal", "L-system", "dragon", "Hilbert", "Koch", "Sierpinski"]
 categories = ["components", "visualization"]
 disciplines = ["computer-science", "mathematics"]
 compiler = "0.11.0"

@@ -9,5 +9,9 @@
 
 #dragon-curve(
   12, step-size: 6,
-  stroke-style: stroke(paint: gradient.linear(..color.map.crest, angle: 45deg), thickness: 3pt, cap: "square")
+  stroke-style: stroke(
+      paint: gradient.linear(..color.map.crest, angle: 45deg),
+      thickness: 3pt,
+      cap: "square"
+  )
 )

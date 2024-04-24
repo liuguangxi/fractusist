@@ -221,7 +221,7 @@
 }
 
 
-// Generate Sierpiński triangle
+// Generate 2D Sierpiński triangle
 //
 // iterations: [0, 6]
 // axiom: "F-G-G"

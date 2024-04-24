@@ -1,6 +1,6 @@
-# Fenxing
+# Fractusist
 
-[Fenxing](https://github.com/liuguangxi/fenxing) (分形 in Chinese, /fēn xíng/, meaning [fractal](https://en.wikipedia.org/wiki/Fractal)) creates a variety of wonderful fractals in Typst.
+Create a variety of wonderful fractals in Typst.
 
 
 ## Examples
@@ -17,7 +17,11 @@ The example below creates a dragon curve of the 12th iteration with the `dragon-
 
   #dragon-curve(
     12, step-size: 6,
-    stroke-style: stroke(paint: gradient.linear(..color.map.crest, angle: 45deg), thickness: 3pt, cap: "square")
+    stroke-style: stroke(
+        paint: gradient.linear(..color.map.crest, angle: 45deg),
+        thickness: 3pt,
+        cap: "square"
+    )
   )
   ```
 </details>
@@ -27,7 +31,7 @@ The example below creates a dragon curve of the 12th iteration with the `dragon-
 
 - Use SVG backend for image rendering.
 - Generate fractals using [L-system](https://en.wikipedia.org/wiki/L-system).
-- The number of iterations, step size, fill and stroke styles, image parameters of generated fractals could be customized.
+- The number of iterations, step size, fill and stroke styles, etc. of generated fractals could be customized.
 
 
 ## Usage
@@ -35,7 +39,7 @@ The example below creates a dragon curve of the 12th iteration with the `dragon-
 Import the latest version of this package with:
 
 ```typ
-#import "@preview/fenxing:0.1.0": *
+#import "@preview/fractusist:0.1.0": *
 ```
 
 Each function generates a specific fractal. The input and output arguments of all functions have a similar style. Typical input arguments are as follows:
@@ -55,46 +59,67 @@ For more codes with these functions see [tests](./tests).
 
 ## Reference
 
-### `dragon-curve`
+### Dragon
 
-Generate dragon curve.
+- `dragon-curve`: Generate dragon curve (n: range **[0, 16]**).
 
 ```typ
 #let dragon-curve(n, step-size: 10, stroke-style: black + 1pt, width: auto, height: auto, fit: "cover") = {...}
 ```
 
 
-### `hilbert-curve`
+### Hilbert
 
-Generate 2D Hilbert curve.
+- `hilbert-curve`: Generate 2D Hilbert curve. (n: range **[1, 8]**).
 
 ```typ
 #let hilbert-curve(n, step-size: 10, stroke-style: black + 1pt, width: auto, height: auto, fit: "cover") = {...}
 ```
 
-
-### `peano-curve`
-
-Generate 2D Peano curve.
+- `peano-curve`: Generate 2D Peano curve (n: range **[1, 5]**).
 
 ```typ
 #let peano-curve(n, step-size: 10, stroke-style: black + 1pt, width: auto, height: auto, fit: "cover") = {...}
 ```
 
 
-### `koch-curve`
+### Koch
 
-Generate Koch curve.
+- `koch-curve`: Generate Koch curve (n: range **[0, 6]**).
 
 ```typ
 #let koch-curve(n, step-size: 10, stroke-style: black + 1pt, width: auto, height: auto, fit: "cover") = {...}
 ```
 
-
-### `koch-snowflake`
-
-Generate Koch snowflake.
+-  `koch-snowflake`: Generate Koch snowflake (n: range **[0, 6]**).
 
 ```typ
 #let koch-snowflake(n, step-size: 10, fill-style: none, stroke-style: black + 1pt, width: auto, height: auto, fit: "cover") = {...}
+```
+
+
+### Sierpiński
+
+- `sierpinski-curve`: Generate classic Sierpiński curve (n: range **[0, 7]**).
+
+```typ
+#let sierpinski-curve(n, step-size: 10, fill-style: none, stroke-style: black + 1pt, width: auto, height: auto, fit: "cover") = {...}
+```
+
+- `sierpinski-square-curve`: Generate Sierpiński square curve (n: range **[0, 7]**).
+
+```typ
+#let sierpinski-square-curve(n, step-size: 10, fill-style: none, stroke-style: black + 1pt, width: auto, height: auto, fit: "cover") = {...}
+```
+
+- `sierpinski-arrowhead-curve`: Generate Sierpiński arrowhead curve (n: range **[0, 8]**).
+
+```typ
+#let sierpinski-arrowhead-curve(n, step-size: 10, stroke-style: black + 1pt, width: auto, height: auto, fit: "cover") = {...}
+```
+
+- `sierpinski-triangle`: Generate 2D Sierpiński triangle (n: range **[0, 6]**).
+
+```typ
+#let sierpinski-triangle(n, step-size: 10, fill-style: none, stroke-style: black + 1pt, width: auto, height: auto, fit: "cover") = {...}
 ```
