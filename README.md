@@ -40,7 +40,7 @@ The example below creates a dragon curve of the 12th iteration with the `dragon-
 Import the latest version of this package with:
 
 ```typ
-#import "@preview/fractusist:0.1.0": *
+#import "@preview/fractusist:0.1.1": *
 ```
 
 Each function generates a specific fractal. The input and output arguments of all functions have a similar style. Typical input arguments are as follows:

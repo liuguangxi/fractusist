@@ -84,7 +84,7 @@
   y-max = calc.ceil(y-max + margin)
 
   let svg-code = gen-svg(path-d, (x-min, x-max, y-min, y-max), fill-style, stroke-style)
-  return image.decode(svg-code, width: width, height: height, fit: fit)
+  return image(bytes(svg-code), width: width, height: height, fit: fit)
 }
 
 
@@ -151,7 +151,7 @@
   y-max = calc.ceil(y-max + margin)
 
   let svg-code = gen-svg(path-d, (x-min, x-max, y-min, y-max), fill-style, stroke-style)
-  return image.decode(svg-code, width: width, height: height, fit: fit)
+  return image(bytes(svg-code), width: width, height: height, fit: fit)
 }
 
 
@@ -217,7 +217,7 @@
   y-max = calc.ceil(y-max + margin)
 
   let svg-code = gen-svg(path-d, (x-min, x-max, y-min, y-max), none, stroke-style)
-  return image.decode(svg-code, width: width, height: height, fit: fit)
+  return image(bytes(svg-code), width: width, height: height, fit: fit)
 }
 
 
