@@ -39,12 +39,12 @@
     let x = ((a - b)*calc.cos(t) + h*calc.cos((a - b)/b*t)) * sc + size/2
     let y = ((a - b)*calc.sin(t) - h*calc.sin((a - b)/b*t)) * sc + size/2
     if i == 0 {
-      cmd.push(curve.move((x * 1pt, y * 1pt)))
+      cmd.push(std.curve.move((x * 1pt, y * 1pt)))
     } else {
-      cmd.push(curve.line((x * 1pt, y * 1pt)))
+      cmd.push(std.curve.line((x * 1pt, y * 1pt)))
     }
   }
-  cmd.push(curve.close())
+  cmd.push(std.curve.close())
 
   box(
     width: size * 1pt, height: size * 1pt,

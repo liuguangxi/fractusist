@@ -41,12 +41,12 @@
     let x = x-size/2 * (calc.sin(a * t + d * calc.pi) + 1)
     let y = y-size/2 * (calc.sin(b * t) + 1)
     if i == 0 {
-      cmd.push(curve.move((x * 1pt, y * 1pt)))
+      cmd.push(std.curve.move((x * 1pt, y * 1pt)))
     } else {
-      cmd.push(curve.line((x * 1pt, y * 1pt)))
+      cmd.push(std.curve.line((x * 1pt, y * 1pt)))
     }
   }
-  cmd.push(curve.close())
+  cmd.push(std.curve.close())
 
   box(
     width: x-size * 1pt, height: y-size * 1pt,
