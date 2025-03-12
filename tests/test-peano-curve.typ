@@ -1,33 +1,19 @@
 #set document(date: none)
 
-
 #import "/src/lib.typ": *
-
 
 #set page(margin: 1cm)
 
 
-= n = 1
-#align(center)[
-  #peano-curve(1, step-size: 40)
-]
+#box(stroke: red+2pt, peano-curve(1, step-size: 40))
 
+#box(stroke: red+2pt, peano-curve(2, step-size: 20))
 
-= n = 2
-#align(center)[
-  #peano-curve(2, step-size: 10, stroke-style: blue + 4pt)
-]
+#box(stroke: red+2pt, peano-curve(3, step-size: 10))
 
-
-= n = 3
-#align(center)[
-  #peano-curve(4, step-size: 5, stroke-style: stroke(paint: gray, thickness: 2pt, cap: "square"))
-]
 #pagebreak(weak: true)
 
 
-= n = 4
-#align(center)[
-  #peano-curve(4, step-size: 6, stroke-style: stroke(paint: gradient.radial(..color.map.crest), thickness: 4pt, cap: "square"))
-]
+#box(stroke: red+2pt, peano-curve(4, step-size: 6, stroke: blue+4pt))
+
 #pagebreak(weak: true)

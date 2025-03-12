@@ -1,45 +1,28 @@
 #set document(date: none)
 
-
 #import "/src/lib.typ": *
-
 
 #set page(margin: 1cm)
 
 
-= n = 1
-#align(center)[
-  #hilbert-curve(1, step-size: 50)
-]
+#box(stroke: red+2pt, hilbert-curve(1, step-size: 40))
 
+#box(stroke: red+2pt, hilbert-curve(2, step-size: 40))
 
-= n = 2
-#align(center)[
-  #hilbert-curve(2, step-size: 30, stroke-style: blue)
-]
+#box(stroke: red+2pt, hilbert-curve(3, step-size: 20))
 
+#box(stroke: red+2pt, hilbert-curve(4, step-size: 20))
 
-= n = 3
-#align(center)[
-  #hilbert-curve(3, step-size: 30, stroke-style: red + 4pt)
-]
-
-
-= n = 4
-#align(center)[
-  #hilbert-curve(4, step-size: 15, stroke-style: stroke(paint: gray, thickness: 5pt, cap: "round", join: "round"))
-]
 #pagebreak(weak: true)
 
 
-= n = 5
-#align(center)[
-  #hilbert-curve(5, step-size: 8, stroke-style: stroke(paint: purple, thickness: 2pt, cap: "square"))
-]
+#box(stroke: red+2pt, hilbert-curve(5, step-size: 10, stroke: blue+4pt))
+
+#pagebreak(weak: true)
 
 
-= n = 6
-#align(center)[
-  #hilbert-curve(6, step-size: 6, stroke-style: stroke(paint: gradient.linear(..color.map.crest, angle: 45deg), thickness: 4pt, cap: "square"))
-]
+#box(stroke: red+2pt,
+  hilbert-curve(6, step-size: 8, stroke: stroke(paint: gradient.linear(..color.map.crest, angle: 45deg), thickness: 4pt, cap: "square"))
+)
+
 #pagebreak(weak: true)
