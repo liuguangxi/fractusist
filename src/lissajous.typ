@@ -31,6 +31,8 @@
   assert(type(a) == int and a >= 1 and a <= 100, message: "`a` should be in range [1, 100]")
   assert(type(b) == int and b >= 1 and b <= 100, message: "`b` should be in range [1, 100]")
   assert(d >= 0 and d <= 2, message: "`d` should be in range [0, 2]")
+  assert(x-size > 0, message: "`x-size` should be positive")
+  assert(y-size > 0, message: "`y-size` should be positive")
 
   let g = calc.gcd(a, b)
   let t-cyc = int(calc.max(a, b) / g * 200);

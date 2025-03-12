@@ -47,8 +47,7 @@ Create a variety of wonderful fractals and curves in Typst.
 
 - Generate fractals using [L-system](https://en.wikipedia.org/wiki/L-system).
 - The number of iterations, step size, fill and stroke styles, etc. of generated fractals could be customized.
-- Generate spirograph curves with different parameters.
-- Generate Lissajous curves with different parameters.
+- Generate spirograph and Lissajous curves with various parameters.
 
 
 ## Usage
@@ -59,16 +58,16 @@ Import the latest version of this package with:
 #import "@preview/fractusist:0.2.0": *
 ```
 
-Each function generates a specific fractal or spirograph curve. The input and output arguments of all functions have a similar style. The content returned is the `box` element.
+Each function (see reference) generates a specific curve. The shape and size of it is configurable. And the fill and stroke style arguments are equivalent to those in the `curve` function. The returned graph is contained within the `box` element.
 
-For more codes with these functions see [tests](https://github.com/liuguangxi/fractusist/tree/main/tests).
+This package comes with some unit tests under the [tests](https://github.com/liuguangxi/fractusist/tree/main/tests) directory.
 
 
 ## Reference
 
 ### Dragon
 
-- `dragon-curve`: Generate dragon curve (n: range **[0, 16]**).
+- `dragon-curve`: Generate dragon curve (n: integer range **[0, 16]**).
 
 ```typ
 #let dragon-curve(n, step-size: 10, stroke: black + 1pt) = {...}
@@ -77,13 +76,13 @@ For more codes with these functions see [tests](https://github.com/liuguangxi/fr
 
 ### Hilbert
 
-- `hilbert-curve`: Generate 2D Hilbert curve. (n: range **[1, 8]**).
+- `hilbert-curve`: Generate 2D Hilbert curve. (n: integer range **[1, 8]**).
 
 ```typ
 #let hilbert-curve(n, step-size: 10, stroke: black + 1pt) = {...}
 ```
 
-- `peano-curve`: Generate 2D Peano curve (n: range **[1, 5]**).
+- `peano-curve`: Generate 2D Peano curve (n: integer range **[1, 5]**).
 
 ```typ
 #let peano-curve(n, step-size: 10, stroke: black + 1pt) = {...}
@@ -92,13 +91,13 @@ For more codes with these functions see [tests](https://github.com/liuguangxi/fr
 
 ### Koch
 
-- `koch-curve`: Generate Koch curve (n: range **[0, 6]**).
+- `koch-curve`: Generate Koch curve (n: integer range **[0, 6]**).
 
 ```typ
 #let koch-curve(n, step-size: 10, fill: none, stroke: black + 1pt) = {...}
 ```
 
--  `koch-snowflake`: Generate Koch snowflake (n: range **[0, 6]**).
+-  `koch-snowflake`: Generate Koch snowflake (n: integer range **[0, 6]**).
 
 ```typ
 #let koch-snowflake(n, step-size: 10, fill: none, stroke: black + 1pt) = {...}
@@ -107,25 +106,25 @@ For more codes with these functions see [tests](https://github.com/liuguangxi/fr
 
 ### Sierpiński
 
-- `sierpinski-curve`: Generate classic Sierpiński curve (n: range **[0, 7]**).
+- `sierpinski-curve`: Generate classic Sierpiński curve (n: integer range **[0, 7]**).
 
 ```typ
 #let sierpinski-curve(n, step-size: 10, fill: none, stroke: black + 1pt) = {...}
 ```
 
-- `sierpinski-square-curve`: Generate Sierpiński square curve (n: range **[0, 7]**).
+- `sierpinski-square-curve`: Generate Sierpiński square curve (n: integer range **[0, 7]**).
 
 ```typ
 #let sierpinski-square-curve(n, step-size: 10, fill: none, stroke: black + 1pt) = {...}
 ```
 
-- `sierpinski-arrowhead-curve`: Generate Sierpiński arrowhead curve (n: range **[0, 8]**).
+- `sierpinski-arrowhead-curve`: Generate Sierpiński arrowhead curve (n: integer range **[0, 8]**).
 
 ```typ
 #let sierpinski-arrowhead-curve(n, step-size: 10, stroke: black + 1pt) = {...}
 ```
 
-- `sierpinski-triangle`: Generate 2D Sierpiński triangle (n: range **[0, 6]**).
+- `sierpinski-triangle`: Generate 2D Sierpiński triangle (n: integer range **[0, 6]**).
 
 ```typ
 #let sierpinski-triangle(n, step-size: 10, fill: none, stroke: black + 1pt) = {...}
@@ -134,13 +133,13 @@ For more codes with these functions see [tests](https://github.com/liuguangxi/fr
 
 ### Spirograph
 
-- `hypotrochoid`: Generate hypotrochoid (a, b, h: range **[1, 100]**).
+- `hypotrochoid`: Generate hypotrochoid (a, b, h: integer range **[1, 100]**).
 
 ```typ
 #let hypotrochoid(a, b, h, size: 100, fill: none, fill-rule: "non-zero", stroke: black + 1pt) = {...}
 ```
 
-- `epitrochoid`: Generate epitrochoid (a, b, h: range **[1, 100]**).
+- `epitrochoid`: Generate epitrochoid (a, b, h: integer range **[1, 100]**).
 
 ```typ
 #let epitrochoid(a, b, h, size: 100, fill: none, fill-rule: "non-zero", stroke: black + 1pt) = {...}
@@ -149,7 +148,7 @@ For more codes with these functions see [tests](https://github.com/liuguangxi/fr
 
 ### Lissajous
 
-- `lissajous-curve`: Generate Lissajous curve (a, b: range **[1, 100]**, d: range **[0, 2]**).
+- `lissajous-curve`: Generate Lissajous curve (a, b: integer range **[1, 100]**, d: float range **[0, 2]**).
 
 ```typ
 #let lissajous-curve(a, b, d, x-size: 100, y-size: 100, fill: none, fill-rule: "non-zero", stroke: black + 1pt) = {...}
