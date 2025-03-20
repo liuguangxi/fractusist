@@ -4,3 +4,4 @@
 #import "sierpinski.typ": sierpinski-curve, sierpinski-square-curve, sierpinski-arrowhead-curve, sierpinski-triangle
 #import "spirograph.typ": hypotrochoid, epitrochoid
 #import "lissajous.typ": lissajous-curve
+#import "tree.typ": fractal-tree, random-fractal-tree, pythagorean-tree

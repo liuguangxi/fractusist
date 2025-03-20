@@ -17,26 +17,38 @@ Create a variety of wonderful fractals and curves in Typst.
       <img src="examples/koch-snowflake-n4.png" width="250px">
     </a>
   </td>
-</tr>
-<tr>
-  <td>Dragon Curve</td>
-  <td>Koch Snowflake</td>
-</tr>
-<tr>
   <td>
     <a href="examples/sierpinski-triangle-n6.typ">
       <img src="examples/sierpinski-triangle-n6.png" width="250px">
     </a>
   </td>
+</tr>
+<tr>
+  <td>Dragon Curve</td>
+  <td>Koch Snowflake</td>
+  <td>Sierpiński Triangle</td>
+</tr>
+<tr>
   <td>
     <a href="examples/hypotrochoid-a19-b16-h2.typ">
       <img src="examples/hypotrochoid-a19-b16-h2.png" width="250px">
     </a>
   </td>
+  <td>
+    <a href="examples/random-fractal-tree-n14.typ">
+      <img src="examples/random-fractal-tree-n14.png" width="250px">
+    </a>
+  </td>
+  <td>
+    <a href="examples/pythagorean-tree-n12.typ">
+      <img src="examples/pythagorean-tree-n12.png" width="250px">
+    </a>
+  </td>
 </tr>
 <tr>
-  <td>Sierpiński Triangle</td>
   <td>Hypotrochoid</td>
+  <td>Random Fractal Tree</td>
+  <td>Pythagorean Tree</td>
 </tr>
 </table>
 
@@ -45,9 +57,9 @@ Create a variety of wonderful fractals and curves in Typst.
 
 ## Features
 
-- Generate fractals using [L-system](https://en.wikipedia.org/wiki/L-system).
-- The number of iterations, step size, fill and stroke styles, etc. of generated fractals could be customized.
+- Generate fractals using [L-system](https://en.wikipedia.org/wiki/L-system). The number of iterations, step size, fill and stroke styles, etc. of generated fractals could be customized.
 - Generate spirograph and Lissajous curves with various parameters.
+- Generate various parameterized fractal trees.
 
 
 ## Usage
@@ -55,7 +67,7 @@ Create a variety of wonderful fractals and curves in Typst.
 Import the latest version of this package with:
 
 ```typ
-#import "@preview/fractusist:0.2.0": *
+#import "@preview/fractusist:0.2.1": *
 ```
 
 Each function (see reference) generates a specific curve. The shape and size of it is configurable. And the fill and stroke style arguments are equivalent to those in the `curve` function. The returned graph is contained within the `box` element.
@@ -152,4 +164,25 @@ This package comes with some unit tests under the [tests](https://github.com/liu
 
 ```typ
 #let lissajous-curve(a, b, d, x-size: 100, y-size: 100, fill: none, fill-rule: "non-zero", stroke: black + 1pt) = {...}
+```
+
+
+### Tree
+
+- `fractal-tree`: Generate fractal tree (n: integer range **[1, 14]**)
+
+```typ
+#let fractal-tree(n, root-color: rgb("#46230A"), leaf-color: rgb("#228B22"), trunk-len: 100, trunk-rad: 3.0, theta: 1/2, angle: 1/4, ratio: 0.8) = {...}
+```
+
+- `random-fractal-tree`: Generate random fractal tree (n: integer range **[1, 14]**)
+
+```typ
+#let random-fractal-tree(n, seed: 42, root-color: rgb("#46230A"), leaf-color: rgb("#228B22"), trunk-len: 100, trunk-rad: 3.0, theta: 1/2, angle: 1/4, ratio: 0.8) = {...}
+```
+
+- `pythagorean-tree`: Generate Pythagorean tree (n: integer range **[1, 14]**)
+
+```typ
+#let pythagorean-tree(n, root-color: rgb("#46230A"), leaf-color: rgb("#228B22"), trunk-len: 50, theta: 1/5, filling: true) = {...}
 ```
