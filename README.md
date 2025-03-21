@@ -60,6 +60,7 @@ Create a variety of wonderful fractals and curves in Typst.
 - Generate fractals using [L-system](https://en.wikipedia.org/wiki/L-system). The number of iterations, step size, fill and stroke styles, etc. of generated fractals could be customized.
 - Generate spirograph and Lissajous curves with various parameters.
 - Generate various parameterized fractal trees.
+- Generate Fibonacci word fractals.
 
 
 ## Usage
@@ -185,4 +186,12 @@ This package comes with some unit tests under the [tests](https://github.com/liu
 
 ```typ
 #let pythagorean-tree(n, root-color: rgb("#46230A"), leaf-color: rgb("#228B22"), trunk-len: 50, theta: 1/5, filling: true) = {...}
+```
+
+
+### Fibonacci
+- `fibonacci-word-fractal`: Generate Fibonacci word fractal (n: integer range **[3, 24]**)
+
+```typ
+#let fibonacci-word-fractal(n, skip-last: true, step-size: 10, start-dir: 0, stroke: black + 1pt) = {...}
 ```

@@ -5,3 +5,4 @@
 #import "spirograph.typ": hypotrochoid, epitrochoid
 #import "lissajous.typ": lissajous-curve
 #import "tree.typ": fractal-tree, random-fractal-tree, pythagorean-tree
+#import "fibonacci.typ": fibonacci-word-fractal
