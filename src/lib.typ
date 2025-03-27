@@ -1,8 +1,13 @@
-#import "dragon.typ": dragon-curve
-#import "hilbert.typ": hilbert-curve, peano-curve
-#import "koch.typ": koch-curve, koch-snowflake
-#import "sierpinski.typ": sierpinski-curve, sierpinski-square-curve, sierpinski-arrowhead-curve, sierpinski-triangle
-#import "spirograph.typ": hypotrochoid, epitrochoid
-#import "lissajous.typ": lissajous-curve
-#import "tree.typ": fractal-tree, random-fractal-tree, pythagorean-tree
-#import "fibonacci.typ": fibonacci-word-fractal
+#import "lsystem/dragon.typ": dragon-curve
+#import "lsystem/hilbert.typ": hilbert-curve, peano-curve
+#import "lsystem/koch.typ": koch-curve, koch-snowflake
+#import "lsystem/sierpinski.typ": sierpinski-curve, sierpinski-square-curve, sierpinski-arrowhead-curve, sierpinski-triangle
+#import "lsystem/lsystem-lib.typ": lsystem-names, lsystem-use
+#import "lsystem/lsystem.typ": lsystem
+
+#import "parametric/spirograph.typ": hypotrochoid, epitrochoid
+#import "parametric/lissajous.typ": lissajous-curve
+
+#import "recursive/tree.typ": fractal-tree, random-fractal-tree, pythagorean-tree
+
+#import "iterative/fibonacci.typ": fibonacci-word-fractal
