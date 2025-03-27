@@ -4,6 +4,8 @@
 
 #set page(margin: 1cm)
 
+#set align(center + horizon)
+
 
 #grid(
   columns: 4,
@@ -33,14 +35,19 @@
   box(stroke: red+2pt, epitrochoid(5, 8, 7, size: 120)),
   box(stroke: red+2pt, epitrochoid(5, 8, 13, size: 120)),
 )
-
 #pagebreak(weak: true)
 
 
-#box(stroke: red+2pt, epitrochoid(13, 9, 6, size: 200, stroke: blue+2pt))
+#box(stroke: red+2pt,
+  epitrochoid(13, 9, 6, size: 200, stroke: blue+2pt)
+)
 
-#box(stroke: red+2pt, epitrochoid(9, 10, 15, size: 200, fill: blue.lighten(50%), fill-rule: "non-zero"))
+#box(stroke: red+2pt,
+  epitrochoid(9, 10, 15, size: 200, padding: 5, fill: blue.lighten(50%), fill-rule: "non-zero")
+)
 
-#box(stroke: red+2pt, epitrochoid(9, 10, 15, size: 200, fill: blue.lighten(50%), fill-rule: "even-odd"))
+#box(stroke: red+2pt,
+  epitrochoid(9, 10, 15, size: 200, padding: 10, fill: blue.lighten(50%), fill-rule: "even-odd")
+)
 
 #pagebreak(weak: true)
