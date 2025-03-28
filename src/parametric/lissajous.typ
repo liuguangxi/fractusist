@@ -58,7 +58,7 @@
       cmd.push(std.curve.line((x * 1pt, y * 1pt)))
     }
   }
-  cmd.push(std.curve.close())
+  cmd.push(std.curve.close(mode: "straight"))
 
   box(
     width: (x-size + 2*padding) * 1pt, height: (y-size + 2*padding) * 1pt,

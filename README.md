@@ -59,8 +59,8 @@ Create a variety of wonderful fractals and curves in Typst.
 
 - Generate fractals using [L-system](https://en.wikipedia.org/wiki/L-system). The grammar, number of iterations, drawing styles, etc. could be customized.
 - Over 30 preset parameters are provided for the L-system to facilitate the drawing of fractals.
-- Generate fractals using iterative methods, including Fibonacci word fractals.
-- Generate fractals using recursive methods, including various fractal trees.
+- Generate fractals using iterative methods, including Fibonacci word fractal and Z-order curve.
+- Generate fractals using recursive methods, including various fractal trees and Sierpiński carpet.
 - Generate parametric curves, such as spirographs and Lissajous curves.
 
 
@@ -95,31 +95,28 @@ This package comes with some unit tests under the [tests](https://github.com/liu
 
 ```typ
 #let lsystem(
-  draw-forward-sym: "F",
-  move-forward-sym: "",
-  axiom: "F",
-  rule-set: ("F": "F-F++F-F"),
-  angle: 1/3,
-  cycle: false,
-  order: 3,
-  step-size: 10,
-  start-angle: 1,
-  padding: 0,
-  fill: none,
-  stroke: black + 1pt
+  draw-forward-sym: "F", move-forward-sym: "", axiom: "F", rule-set: ("F": "F-F++F-F"),
+  angle: 1/3, cycle: false,
+  order: 3, step-size: 10, start-angle: 1, padding: 0,
+  fill: none, stroke: black + 1pt
 ) = {...}
 ```
 
 
-### Iterative Fractal
+### Iterative Method Fractal
 
 - `fibonacci-word-fractal`: Generate Fibonacci word fractal (n: integer range **[3, 24]**)
 ```typ
 #let fibonacci-word-fractal(n, skip-last: true, step-size: 10, start-dir: 0, padding: 0, stroke: black + 1pt) = {...}
 ```
 
+- `z-order-curve`: Generate Z-order curve (n: integer range **[1, 8]**)
+```typ
+#let z-order-curve(n, step-size: 10, start-dir: 0, padding: 0, stroke: black + 1pt) = {...}
+```
 
-### Recursive Fractal
+
+### Recursive Method Fractal
 
 - `fractal-tree`: Generate fractal tree (n: integer range **[1, 14]**)
 ```typ
@@ -134,6 +131,11 @@ This package comes with some unit tests under the [tests](https://github.com/liu
 - `pythagorean-tree`: Generate Pythagorean tree (n: integer range **[1, 14]**)
 ```typ
 #let pythagorean-tree(n, root-color: rgb("#46230A"), leaf-color: rgb("#228B22"), trunk-len: 50, theta: 1/5, padding: 0, filling: true) = {...}
+```
+
+- `sierpinski-carpet`: Generate Sierpiński carpet (n: integer range **[0, 5]**)
+```typ
+#let sierpinski-carpet(n, size: 243, padding: 0, fill: none, stroke: black + 1pt) = {...}
 ```
 
 

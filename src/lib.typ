@@ -9,5 +9,7 @@
 #import "parametric/lissajous.typ": lissajous-curve
 
 #import "recursive/tree.typ": fractal-tree, random-fractal-tree, pythagorean-tree
+#import "recursive/carpet.typ": sierpinski-carpet
 
 #import "iterative/fibonacci.typ": fibonacci-word-fractal
+#import "iterative/z-order.typ": z-order-curve
