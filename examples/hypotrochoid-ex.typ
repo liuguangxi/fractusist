@@ -1,4 +1,4 @@
-#import "@preview/fractusist:0.3.0": *
+#import "@preview/fractusist:0.3.1": *
 
 #set page(fill: none, width: auto, height: auto, margin: 0pt)
 
