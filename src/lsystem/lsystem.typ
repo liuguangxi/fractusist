@@ -73,7 +73,7 @@
   let s = axiom
   for i in range(order) {
     s = s.replace(match-str, x => rule-set.at(x.text))
-    assert(s.len() <= 500000, message: "the length of string has exceeded 500000")
+    assert(s.len() <= 5000000, message: "the length of string has exceeded 5000000")
   }
 
   // Generate drawing commands

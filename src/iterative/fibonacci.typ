@@ -19,7 +19,7 @@
 //     skip-last: whether skip the last symbol (Fibonacci word fractal becomes more symmetrical), optional;
 //                default is true, false is not skip the last symbol
 //     step-size: step size (in pt), optional
-//     start-dir: starting direction (0: right, 1:up, 2:left, 3: down), optional
+//     start-dir: starting direction (0:right, 1:up, 2:left, 3:down), optional
 //     padding: spacing around the content (in pt), optional
 //     stroke: how to stroke the curve, optional
 //
@@ -40,7 +40,7 @@
   assert((type(padding) == int or type(padding) == float) and padding >= 0, message: "`padding` should be non-negative")
 
   let dx = (step-size, 0, -step-size, 0)
-  let dy = (0, step-size, 0, -step-size)
+  let dy = (0, -step-size, 0, step-size)
 
   let (s-2, s-1) = ("1", "0")
   let s

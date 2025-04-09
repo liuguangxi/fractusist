@@ -39,7 +39,7 @@
 ) = {
   assert(type(a) == int and a >= 1 and a <= 100, message: "`a` should be in range [1, 100]")
   assert(type(b) == int and b >= 1 and b <= 100, message: "`b` should be in range [1, 100]")
-  assert(d >= 0 and d <= 2, message: "`d` should be in range [0, 2]")
+  assert((type(d) == int or type(d) == float) and d >= 0 and d <= 2, message: "`d` should be in range [0, 2]")
   assert((type(x-size) == int or type(x-size) == float) and x-size > 0, message: "`x-size` should be positive")
   assert((type(y-size) == int or type(y-size) == float) and y-size > 0, message: "`y-size` should be positive")
   assert((type(padding) == int or type(padding) == float) and padding >= 0, message: "`padding` should be non-negative")
@@ -51,7 +51,7 @@
   for i in range(t-cyc + 1) {
     let t = i * t-res
     let x = x-size/2 * (calc.sin(a * t + d * calc.pi) + 1) + padding
-    let y = y-size/2 * (calc.sin(b * t) + 1) + padding
+    let y = y-size/2 * (-calc.sin(b * t) + 1) + padding
     if i == 0 {
       cmd.push(std.curve.move((x * 1pt, y * 1pt)))
     } else {
