@@ -69,7 +69,7 @@ Create a variety of wonderful fractals and curves in Typst.
 Import the latest version of this package with:
 
 ```typ
-#import "@preview/fractusist:0.3.0": *
+#import "@preview/fractusist:0.3.1": *
 ```
 
 Each drawing function generates a type of fractal or curve, with a variety of configurable parameters.
