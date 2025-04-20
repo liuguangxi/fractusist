@@ -617,9 +617,9 @@ Currently L-system generator library defines the parameters for the following fr
       columns: (200pt,) * 2,
       fill: (_, y) => if calc.odd(y) {main-color.lighten(90%)},
       stroke: none,
-      table.hline(stroke: blue.darken(60%) + 1.5pt),
+      table.hline(stroke: main-color.darken(60%) + 1.5pt),
       ..names.map(it => [#it]),
-      table.hline(stroke: blue.darken(60%) + 1.5pt)
+      table.hline(stroke: main-color.darken(60%) + 1.5pt)
     )
   ]
 ] <table:names>
