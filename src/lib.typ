@@ -13,3 +13,7 @@
 
 #import "iterative/fibonacci.typ": fibonacci-word-fractal
 #import "iterative/z-order.typ": z-order-curve
+
+#import "tilings/penrose-1.typ": p1-a-pentagon, p1-b-pentagon, p1-c-pentagon, p1-diamond, p1-boat, p1-star, penrose-1
+#import "tilings/penrose-2.typ": p2-a-triangle, p2-ap-triangle, p2-b-triangle, p2-bp-triangle, penrose-2
+#import "tilings/penrose-3.typ": p3-a-triangle, p3-ap-triangle, p3-b-triangle, p3-bp-triangle, penrose-3

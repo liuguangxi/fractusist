@@ -62,6 +62,7 @@ Create a variety of wonderful fractals and curves in Typst.
 - Generate fractals using iterative methods, including Fibonacci word fractal and Z-order curve.
 - Generate fractals using recursive methods, including various fractal trees and Sierpiński carpet.
 - Generate parametric curves, such as spirographs and Lissajous curves.
+- Generate three types of Penrose tiling: original pentagonal Penrose tiling (P1), kite and dart tiling (P2) and rhombus tiling (P3).
 
 
 ## Usage
@@ -69,7 +70,7 @@ Create a variety of wonderful fractals and curves in Typst.
 Import the latest version of this package with:
 
 ```typ
-#import "@preview/fractusist:0.3.1": *
+#import "@preview/fractusist:0.3.2": *
 ```
 
 Each drawing function generates a type of fractal or curve, with a variety of configurable parameters.
