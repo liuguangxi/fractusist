@@ -395,9 +395,9 @@
 
 
   // Generate drawing commands
-  let cmd-pentagon-a = ()
-  let cmd-pentagon-b = ()
-  let cmd-pentagon-c = ()
+  let cmd-a-pentagon = ()
+  let cmd-b-pentagon = ()
+  let cmd-c-pentagon = ()
   let cmd-diamond = ()
   let cmd-boat = ()
   let cmd-star = ()
@@ -418,19 +418,19 @@
 
     if tt == 0 {    // type A pentagon
       for i in range(vp.len()) {
-        cmd-pentagon-a.push(if i == 0 {std.curve.move(pn.at(i))} else {std.curve.line(pn.at(i))})
+        cmd-a-pentagon.push(if i == 0 {std.curve.move(pn.at(i))} else {std.curve.line(pn.at(i))})
       }
-      cmd-pentagon-a.push(std.curve.close(mode: "straight"))
+      cmd-a-pentagon.push(std.curve.close(mode: "straight"))
     } else if tt == 1 {    // type B pentagon
       for i in range(vp.len()) {
-        cmd-pentagon-b.push(if i == 0 {std.curve.move(pn.at(i))} else {std.curve.line(pn.at(i))})
+        cmd-b-pentagon.push(if i == 0 {std.curve.move(pn.at(i))} else {std.curve.line(pn.at(i))})
       }
-      cmd-pentagon-b.push(std.curve.close(mode: "straight"))
+      cmd-b-pentagon.push(std.curve.close(mode: "straight"))
     } else if tt == 2 {    // type C pentagon
       for i in range(vp.len()) {
-        cmd-pentagon-c.push(if i == 0 {std.curve.move(pn.at(i))} else {std.curve.line(pn.at(i))})
+        cmd-c-pentagon.push(if i == 0 {std.curve.move(pn.at(i))} else {std.curve.line(pn.at(i))})
       }
-      cmd-pentagon-c.push(std.curve.close(mode: "straight"))
+      cmd-c-pentagon.push(std.curve.close(mode: "straight"))
     } else if tt == 3 {    // diamond
       for i in range(vp.len()) {
         cmd-diamond.push(if i == 0 {std.curve.move(pn.at(i))} else {std.curve.line(pn.at(i))})
@@ -453,7 +453,7 @@
     cmd-edge.push(std.curve.close(mode: "straight"))
   }
 
-  ((width, height), cmd-pentagon-a, cmd-pentagon-b, cmd-pentagon-c, cmd-diamond, cmd-boat, cmd-star, cmd-edge)
+  ((width, height), cmd-a-pentagon, cmd-b-pentagon, cmd-c-pentagon, cmd-diamond, cmd-boat, cmd-star, cmd-edge)
 }
 
 
@@ -491,11 +491,11 @@
   assert(type(n) == int and n >= 0 and n <= 6, message: "`n` should be in range [0, 6]")
   assert((type(padding) == int or type(padding) == float) and padding >= 0, message: "`padding` should be non-negative")
 
-  let (sz, cmd-pentagon-a, cmd-pentagon-b, cmd-pentagon-c, cmd-diamond, cmd-boat, cmd-star, cmd-edge) = gen-paths(v-ini, n, padding)
+  let (sz, cmd-a-pentagon, cmd-b-pentagon, cmd-c-pentagon, cmd-diamond, cmd-boat, cmd-star, cmd-edge) = gen-paths(v-ini, n, padding)
   box(width: sz.at(0), height: sz.at(1), {
-    place(std.curve(fill: fill-a-pentagon, stroke: none, ..cmd-pentagon-a))
-    place(std.curve(fill: fill-b-pentagon, stroke: none, ..cmd-pentagon-b))
-    place(std.curve(fill: fill-c-pentagon, stroke: none, ..cmd-pentagon-c))
+    place(std.curve(fill: fill-a-pentagon, stroke: none, ..cmd-a-pentagon))
+    place(std.curve(fill: fill-b-pentagon, stroke: none, ..cmd-b-pentagon))
+    place(std.curve(fill: fill-c-pentagon, stroke: none, ..cmd-c-pentagon))
     place(std.curve(fill: fill-diamond, stroke: none, ..cmd-diamond))
     place(std.curve(fill: fill-boat, stroke: none, ..cmd-boat))
     place(std.curve(fill: fill-star, stroke: none, ..cmd-star))
