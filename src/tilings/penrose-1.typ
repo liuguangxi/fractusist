@@ -464,9 +464,9 @@
 // Arguments:
 //     v-ini: initial shape, optional
 //     n: the number of iterations, optional
-//     fill-pentagon-a: type A pentagon color, optional
-//     fill-pentagon-b: type B pentagon color, optional
-//     fill-pentagon-c: type C pentagon color, optional
+//     fill-a-pentagon: type A pentagon color, optional
+//     fill-b-pentagon: type B pentagon color, optional
+//     fill-c-pentagon: type C pentagon color, optional
 //     fill-diamond: diamond color, optional
 //     fill-boat: boat color, optional
 //     fill-star: star color, optional
@@ -478,9 +478,9 @@
 #let penrose-1(
   v-ini: (p1-a-pentagon(none, (-200, 0), (200, 0)),),
   n: 3,
-  fill-pentagon-a: red,
-  fill-pentagon-b: red.darken(20%),
-  fill-pentagon-c: red.darken(40%),
+  fill-a-pentagon: red,
+  fill-b-pentagon: red.darken(20%),
+  fill-c-pentagon: red.darken(40%),
   fill-diamond: blue,
   fill-boat: green,
   fill-star: yellow,
@@ -493,9 +493,9 @@
 
   let (sz, cmd-pentagon-a, cmd-pentagon-b, cmd-pentagon-c, cmd-diamond, cmd-boat, cmd-star, cmd-edge) = gen-paths(v-ini, n, padding)
   box(width: sz.at(0), height: sz.at(1), {
-    place(std.curve(fill: fill-pentagon-a, stroke: none, ..cmd-pentagon-a))
-    place(std.curve(fill: fill-pentagon-b, stroke: none, ..cmd-pentagon-b))
-    place(std.curve(fill: fill-pentagon-c, stroke: none, ..cmd-pentagon-c))
+    place(std.curve(fill: fill-a-pentagon, stroke: none, ..cmd-pentagon-a))
+    place(std.curve(fill: fill-b-pentagon, stroke: none, ..cmd-pentagon-b))
+    place(std.curve(fill: fill-c-pentagon, stroke: none, ..cmd-pentagon-c))
     place(std.curve(fill: fill-diamond, stroke: none, ..cmd-diamond))
     place(std.curve(fill: fill-boat, stroke: none, ..cmd-boat))
     place(std.curve(fill: fill-star, stroke: none, ..cmd-star))
