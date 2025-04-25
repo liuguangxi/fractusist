@@ -132,7 +132,13 @@
   penrose-1(
     v-ini: (p1-a-pentagon(none, (-200, 0), (200, 0)),),
     n: 3,
-    stroke-edge: stroke(paint: gray, thickness: 2pt, cap: "round", join: "round"),
+    fill-a-pentagon: gradient.radial(red, red.darken(20%)),
+    fill-b-pentagon: gradient.radial(orange, orange.darken(20%)),
+    fill-c-pentagon: gradient.radial(yellow, yellow.darken(20%)),
+    fill-diamond: gradient.radial(purple.lighten(70%), purple.lighten(50%)),
+    fill-boat: gradient.radial(purple.lighten(70%), purple.lighten(50%)),
+    fill-star: gradient.radial(purple.lighten(70%), purple.lighten(50%)),
+    stroke-edge: stroke(paint: gradient.radial(luma(60%), luma(40%)), thickness: 2pt, cap: "round", join: "round"),
     padding: 10
   )
 )
