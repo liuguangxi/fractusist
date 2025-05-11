@@ -31,7 +31,6 @@
   (red.lighten(50%), 100%)
 )
 
-#let t-none = [#h(0.25em);#box(outset: 2pt, radius: 2pt, fill: red.lighten(60%))[`none`];#h(0.25em)]
 #let t-bool = [#h(0.25em);#box(outset: 2pt, radius: 2pt, fill: yellow.lighten(50%))[`bool`];#h(0.25em)]
 #let t-int = [#h(0.25em);#box(outset: 2pt, radius: 2pt, fill: yellow.lighten(50%))[`int`];#h(0.25em)]
 #let t-float = [#h(0.25em);#box(outset: 2pt, radius: 2pt, fill: yellow.lighten(50%))[`float`];#h(0.25em)]
@@ -42,6 +41,7 @@
 #let t-color = [#h(0.25em);#box(outset: 2pt, radius: 2pt, fill: grad-type)[`color`];#h(0.25em)]
 #let t-fill = [#h(0.25em);#box(outset: 2pt, radius: 2pt, fill: grad-type)[`fill`];#h(0.25em)]
 #let t-stroke = [#h(0.25em);#box(outset: 2pt, radius: 2pt, stroke: 2pt + grad-type)[`stroke`];#h(0.25em)]
+#let t-none = [#h(0.25em);#box(outset: 2pt, radius: 2pt, fill: red.lighten(70%))[`none`];#h(0.25em)]
 
 
 #let fn-block = block.with(width: 100%, inset: 6pt, fill: luma(90%), stroke: (left: luma(40%) + 3pt))
