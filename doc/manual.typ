@@ -69,10 +69,19 @@
   #h(0.5em) #it.body
 ]
 
+#show figure.where(kind: figure): set figure.caption(position: bottom)
+#show figure.caption: it => [
+  #text(font: sans-font, weight: "bold")[
+    #it.supplement
+    #context it.counter.display(it.numbering)
+  ]
+  #h(0.5em) #it.body
+]
+
 
 // Contents
 #heading(bookmarked: true, numbering: none, outlined: false, [Contents])
-#block(height: 60%)[
+#block(height: 82%)[
   #columns(2, outline(title: none))
 ]
 
@@ -89,10 +98,11 @@ It has the following features:
 - Generate fractals using iterative methods, including Fibonacci word fractal and Z-order curve.
 - Generate fractals using recursive methods, including various fractal trees and Sierpiński carpet.
 - Generate parametric curves, such as spirographs and Lissajous curves.
+- Generate three types of Penrose tiling: original pentagonal Penrose tiling (P1), kite and dart tiling (P2) and rhombus tiling (P3).
 
 To use it, import the latest version of this package with:
 ```typ
-#import "@preview/fractusist:0.3.1": *
+#import "@preview/fractusist:0.3.2": *
 ```
 This line will be omitted in the examples codes that follows.
 
@@ -1992,6 +2002,1440 @@ A hypotrochoid curve and an epitrochoid curve.
     set align(center)
     box(width: 100%, inset: 5pt, stroke: luma(50%),
       eval(codes.text, mode: "markup", scope: (hypotrochoid: hypotrochoid, epitrochoid: epitrochoid))
+    )
+  }
+)
+
+#pagebreak(weak: true)
+
+
+= Tilings
+
+== Guide
+
+A tiling is the covering of a surface, often a plane, using one or more geometric shapes, called tiles, with no overlaps and no gaps.
+
+Currently the Penrose tiling#footnote[https://en.wikipedia.org/wiki/Penrose_tiling] is implemented with three types:
+original pentagonal Penrose tiling (P1), kite and dart tiling (P2) and rhombus tiling (P3).
+
+== Reference
+
+=== `p1-a-pentagon`
+
+Generate type A pentagon tile in P1. The coordinates of three vertices apex ($A$), left ($L$) and right ($R$) uniquely determine the shape.
+
+#figure(
+  caption: [Type A pentagon tile in P1]
+)[
+  #align(center)[
+    #box(width: 150pt, height: 140pt, {
+      place(dx: 15pt, dy: 15pt,
+        penrose-1(
+          v-ini: (p1-a-pentagon(none, (-60, 0), (60, 0)),),
+          n: 0,
+          fill-a-pentagon: rgb("#8886C2").lighten(50%),
+          stroke-edge: stroke(paint: black, thickness: 1pt, cap: "round", join: "round")
+        )
+      )
+      place(dx: 70pt, dy: 5pt, [$A$])
+      place(dx: 5pt, dy: 55pt, [$L$])
+      place(dx: 135pt, dy: 55pt, [$R$])
+    })
+  ]
+]
+
+#heading(bookmarked: false, outlined: false, level: 4, numbering: none)[Parameters]
+
+#fn-block[
+#fn-name[`p1-a-pentagon`]`(`\
+`  `#t-none;#t-array`,`\
+`  `#t-none;#t-array`,`\
+`  `#t-none;#t-array`,`\
+`) -> `#t-array
+]
+
+#para-block[
+*`apex`* #h(1fr) #t-none #attr-or #t-array #h(1em) #attr-req #h(0.5em) #attr-pos
+
+The coordinate of vertex apex of the tile.
+
+If type is #typc-code("none"), the coordinate would be computed internally; otherwise should provided as #typc-code("(x, y)").
+
+*Note*: At most one input arguments can be #typc-code("none").
+]
+
+#para-block[
+*`left`* #h(1fr) #t-none #attr-or #t-array #h(1em) #attr-req #h(0.5em) #attr-pos
+
+The coordinate of vertex left of the tile.
+
+If type is #typc-code("none"), the coordinate would be computed internally; otherwise should provided as #typc-code("(x, y)").
+
+*Note*: At most one input arguments can be #typc-code("none").
+]
+
+#para-block[
+*`right`* #h(1fr) #t-none #attr-or #t-array #h(1em) #attr-req #h(0.5em) #attr-pos
+
+The coordinate of vertex right of the tile.
+
+If type is #typc-code("none"), the coordinate would be computed internally; otherwise should provided as #typc-code("(x, y)").
+
+*Note*: At most one input arguments can be #typc-code("none").
+]
+
+#para-block[
+*`tile`* #h(1fr) #t-array #h(1em) #attr-ret
+
+Returned parameters of tile.
+]
+
+
+=== `p1-b-pentagon`
+
+Generate type B pentagon tile in P1. The coordinates of three vertices apex ($A$), left ($L$) and right ($R$) uniquely determine the shape.
+
+#figure(
+  caption: [Type B pentagon tile in P1]
+)[
+  #align(center)[
+    #box(width: 150pt, height: 140pt, {
+      place(dx: 15pt, dy: 15pt,
+        penrose-1(
+          v-ini: (p1-b-pentagon(none, (-60, 0), (60, 0)),),
+          n: 0,
+          fill-b-pentagon: rgb("#8886C2").lighten(50%),
+          stroke-edge: stroke(paint: black, thickness: 1pt, cap: "round", join: "round")
+        )
+      )
+      place(dx: 70pt, dy: 5pt, [$A$])
+      place(dx: 5pt, dy: 55pt, [$L$])
+      place(dx: 135pt, dy: 55pt, [$R$])
+    })
+  ]
+]
+
+#heading(bookmarked: false, outlined: false, level: 4, numbering: none)[Parameters]
+
+#fn-block[
+#fn-name[`p1-b-pentagon`]`(`\
+`  `#t-none;#t-array`,`\
+`  `#t-none;#t-array`,`\
+`  `#t-none;#t-array`,`\
+`) -> `#t-array
+]
+
+#para-block[
+*`apex`* #h(1fr) #t-none #attr-or #t-array #h(1em) #attr-req #h(0.5em) #attr-pos
+
+The coordinate of vertex apex of the tile.
+
+If type is #typc-code("none"), the coordinate would be computed internally; otherwise should provided as #typc-code("(x, y)").
+
+*Note*: At most one input arguments can be #typc-code("none").
+]
+
+#para-block[
+*`left`* #h(1fr) #t-none #attr-or #t-array #h(1em) #attr-req #h(0.5em) #attr-pos
+
+The coordinate of vertex left of the tile.
+
+If type is #typc-code("none"), the coordinate would be computed internally; otherwise should provided as #typc-code("(x, y)").
+
+*Note*: At most one input arguments can be #typc-code("none").
+]
+
+#para-block[
+*`right`* #h(1fr) #t-none #attr-or #t-array #h(1em) #attr-req #h(0.5em) #attr-pos
+
+The coordinate of vertex right of the tile.
+
+If type is #typc-code("none"), the coordinate would be computed internally; otherwise should provided as #typc-code("(x, y)").
+
+*Note*: At most one input arguments can be #typc-code("none").
+]
+
+#para-block[
+*`tile`* #h(1fr) #t-array #h(1em) #attr-ret
+
+Returned parameters of tile.
+]
+
+
+=== `p1-c-pentagon`
+
+Generate type C pentagon tile in P1. The coordinates of three vertices apex ($A$), left ($L$) and right ($R$) uniquely determine the shape.
+
+#figure(
+  caption: [Type C pentagon tile in P1]
+)[
+  #align(center)[
+    #box(width: 150pt, height: 140pt, {
+      place(dx: 15pt, dy: 15pt,
+        penrose-1(
+          v-ini: (p1-c-pentagon(none, (-60, 0), (60, 0)),),
+          n: 0,
+          fill-c-pentagon: rgb("#8886C2").lighten(50%),
+          stroke-edge: stroke(paint: black, thickness: 1pt, cap: "round", join: "round")
+        )
+      )
+      place(dx: 70pt, dy: 5pt, [$A$])
+      place(dx: 5pt, dy: 55pt, [$L$])
+      place(dx: 135pt, dy: 55pt, [$R$])
+    })
+  ]
+]
+
+#heading(bookmarked: false, outlined: false, level: 4, numbering: none)[Parameters]
+
+#fn-block[
+#fn-name[`p1-c-pentagon`]`(`\
+`  `#t-none;#t-array`,`\
+`  `#t-none;#t-array`,`\
+`  `#t-none;#t-array`,`\
+`) -> `#t-array
+]
+
+#para-block[
+*`apex`* #h(1fr) #t-none #attr-or #t-array #h(1em) #attr-req #h(0.5em) #attr-pos
+
+The coordinate of vertex apex of the tile.
+
+If type is #typc-code("none"), the coordinate would be computed internally; otherwise should provided as #typc-code("(x, y)").
+
+*Note*: At most one input arguments can be #typc-code("none").
+]
+
+#para-block[
+*`left`* #h(1fr) #t-none #attr-or #t-array #h(1em) #attr-req #h(0.5em) #attr-pos
+
+The coordinate of vertex left of the tile.
+
+If type is #typc-code("none"), the coordinate would be computed internally; otherwise should provided as #typc-code("(x, y)").
+
+*Note*: At most one input arguments can be #typc-code("none").
+]
+
+#para-block[
+*`right`* #h(1fr) #t-none #attr-or #t-array #h(1em) #attr-req #h(0.5em) #attr-pos
+
+The coordinate of vertex right of the tile.
+
+If type is #typc-code("none"), the coordinate would be computed internally; otherwise should provided as #typc-code("(x, y)").
+
+*Note*: At most one input arguments can be #typc-code("none").
+]
+
+#para-block[
+*`tile`* #h(1fr) #t-array #h(1em) #attr-ret
+
+Returned parameters of tile.
+]
+
+
+=== `p1-diamond`
+
+Generate diamond (a thin rhombus) tile in P1. The coordinates of three vertices apex ($A$), left ($L$) and right ($R$) uniquely determine the shape.
+
+#figure(
+  caption: [Diamond tile in P1]
+)[
+  #align(center)[
+    #box(width: 60pt, height: 110pt, {
+      place(dx: 15pt, dy: 15pt,
+        penrose-1(
+          v-ini: (p1-diamond(none, (-14.164, 0), (14.164, 0)),),
+          n: 0,
+          fill-diamond: rgb("#192836").lighten(80%),
+          stroke-edge: stroke(paint: black, thickness: 1pt, cap: "round", join: "round")
+        )
+      )
+      place(dx: 25pt, dy: 5pt, [$A$])
+      place(dx: 5pt, dy: 55pt, [$L$])
+      place(dx: 44pt, dy: 55pt, [$R$])
+    })
+  ]
+]
+
+#heading(bookmarked: false, outlined: false, level: 4, numbering: none)[Parameters]
+
+#fn-block[
+#fn-name[`p1-diamond`]`(`\
+`  `#t-none;#t-array`,`\
+`  `#t-none;#t-array`,`\
+`  `#t-none;#t-array`,`\
+`) -> `#t-array
+]
+
+#para-block[
+*`apex`* #h(1fr) #t-none #attr-or #t-array #h(1em) #attr-req #h(0.5em) #attr-pos
+
+The coordinate of vertex apex of the tile.
+
+If type is #typc-code("none"), the coordinate would be computed internally; otherwise should provided as #typc-code("(x, y)").
+
+*Note*: At most one input arguments can be #typc-code("none").
+]
+
+#para-block[
+*`left`* #h(1fr) #t-none #attr-or #t-array #h(1em) #attr-req #h(0.5em) #attr-pos
+
+The coordinate of vertex left of the tile.
+
+If type is #typc-code("none"), the coordinate would be computed internally; otherwise should provided as #typc-code("(x, y)").
+
+*Note*: At most one input arguments can be #typc-code("none").
+]
+
+#para-block[
+*`right`* #h(1fr) #t-none #attr-or #t-array #h(1em) #attr-req #h(0.5em) #attr-pos
+
+The coordinate of vertex right of the tile.
+
+If type is #typc-code("none"), the coordinate would be computed internally; otherwise should provided as #typc-code("(x, y)").
+
+*Note*: At most one input arguments can be #typc-code("none").
+]
+
+#para-block[
+*`tile`* #h(1fr) #t-array #h(1em) #attr-ret
+
+Returned parameters of tile.
+]
+
+
+=== `p1-boat`
+
+Generate boat (roughly 3/5 of a star) tile in P1. The coordinates of three vertices apex ($A$), left ($L$) and right ($R$) uniquely determine the shape.
+
+#figure(
+  caption: [Boat tile in P1]
+)[
+  #align(center)[
+    #box(width: 150pt, height: 95pt, {
+      place(dx: 15pt, dy: 15pt,
+        penrose-1(
+          v-ini: (p1-boat(none, (-14.164, 0), (14.164, 0)),),
+          n: 0,
+          fill-boat: rgb("#192836").lighten(80%),
+          stroke-edge: stroke(paint: black, thickness: 1pt, cap: "round", join: "round")
+        )
+      )
+      place(dx: 70pt, dy: 5pt, [$A$])
+      place(dx: 52pt, dy: 46pt, [$L$])
+      place(dx: 90pt, dy: 46pt, [$R$])
+    })
+  ]
+]
+
+#heading(bookmarked: false, outlined: false, level: 4, numbering: none)[Parameters]
+
+#fn-block[
+#fn-name[`p1-boat`]`(`\
+`  `#t-none;#t-array`,`\
+`  `#t-none;#t-array`,`\
+`  `#t-none;#t-array`,`\
+`) -> `#t-array
+]
+
+#para-block[
+*`apex`* #h(1fr) #t-none #attr-or #t-array #h(1em) #attr-req #h(0.5em) #attr-pos
+
+The coordinate of vertex apex of the tile.
+
+If type is #typc-code("none"), the coordinate would be computed internally; otherwise should provided as #typc-code("(x, y)").
+
+*Note*: At most one input arguments can be #typc-code("none").
+]
+
+#para-block[
+*`left`* #h(1fr) #t-none #attr-or #t-array #h(1em) #attr-req #h(0.5em) #attr-pos
+
+The coordinate of vertex left of the tile.
+
+If type is #typc-code("none"), the coordinate would be computed internally; otherwise should provided as #typc-code("(x, y)").
+
+*Note*: At most one input arguments can be #typc-code("none").
+]
+
+#para-block[
+*`right`* #h(1fr) #t-none #attr-or #t-array #h(1em) #attr-req #h(0.5em) #attr-pos
+
+The coordinate of vertex right of the tile.
+
+If type is #typc-code("none"), the coordinate would be computed internally; otherwise should provided as #typc-code("(x, y)").
+
+*Note*: At most one input arguments can be #typc-code("none").
+]
+
+#para-block[
+*`tile`* #h(1fr) #t-array #h(1em) #attr-ret
+
+Returned parameters of tile.
+]
+
+
+=== `p1-star`
+
+Generate star (pentagram) tile in P1. The coordinates of three vertices apex ($A$), left ($L$) and right ($R$) uniquely determine the shape.
+
+#figure(
+  caption: [Star tile in P1]
+)[
+  #align(center)[
+    #box(width: 150pt, height: 140pt, {
+      place(dx: 15pt, dy: 15pt,
+        penrose-1(
+          v-ini: (p1-star(none, (-14.164, 0), (14.164, 0)),),
+          n: 0,
+          fill-star: rgb("#192836").lighten(80%),
+          stroke-edge: stroke(paint: black, thickness: 1pt, cap: "round", join: "round")
+        )
+      )
+      place(dx: 70pt, dy: 5pt, [$A$])
+      place(dx: 52pt, dy: 46pt, [$L$])
+      place(dx: 90pt, dy: 46pt, [$R$])
+    })
+  ]
+]
+
+#heading(bookmarked: false, outlined: false, level: 4, numbering: none)[Parameters]
+
+#fn-block[
+#fn-name[`p1-star`]`(`\
+`  `#t-none;#t-array`,`\
+`  `#t-none;#t-array`,`\
+`  `#t-none;#t-array`,`\
+`) -> `#t-array
+]
+
+#para-block[
+*`apex`* #h(1fr) #t-none #attr-or #t-array #h(1em) #attr-req #h(0.5em) #attr-pos
+
+The coordinate of vertex apex of the tile.
+
+If type is #typc-code("none"), the coordinate would be computed internally; otherwise should provided as #typc-code("(x, y)").
+
+*Note*: At most one input arguments can be #typc-code("none").
+]
+
+#para-block[
+*`left`* #h(1fr) #t-none #attr-or #t-array #h(1em) #attr-req #h(0.5em) #attr-pos
+
+The coordinate of vertex left of the tile.
+
+If type is #typc-code("none"), the coordinate would be computed internally; otherwise should provided as #typc-code("(x, y)").
+
+*Note*: At most one input arguments can be #typc-code("none").
+]
+
+#para-block[
+*`right`* #h(1fr) #t-none #attr-or #t-array #h(1em) #attr-req #h(0.5em) #attr-pos
+
+The coordinate of vertex right of the tile.
+
+If type is #typc-code("none"), the coordinate would be computed internally; otherwise should provided as #typc-code("(x, y)").
+
+*Note*: At most one input arguments can be #typc-code("none").
+]
+
+#para-block[
+*`tile`* #h(1fr) #t-array #h(1em) #attr-ret
+
+Returned parameters of tile.
+]
+
+
+=== `penrose-1`
+
+Generate Penrose pentagon tiling (P1).
+
+#heading(bookmarked: false, outlined: false, level: 4, numbering: none)[Parameters]
+
+#fn-block[
+#fn-name[`penrose-1`]`(`\
+`  v-ini:` #t-array`,`\
+`  n:` #t-int`,`\
+`  fill-a-pentagon:` #t-fill`,`\
+`  fill-b-pentagon:` #t-fill`,`\
+`  fill-c-pentagon:` #t-fill`,`\
+`  fill-diamond:` #t-fill`,`\
+`  fill-boat:` #t-fill`,`\
+`  fill-star:` #t-fill`,`\
+`  stroke-edge:` #t-stroke`,`\
+`  padding:` #t-int;#t-float`,`\
+`) -> `#t-content
+]
+
+#para-block[
+*`v-ini`* #h(1fr) #t-array #h(1em)  #attr-set
+
+initial shape. Array of parameters of certain tiles.
+
+Default: #typc-code("(p1-a-pentagon(none, (-200, 0), (200, 0)),)")
+]
+
+#para-block[
+*`n`* #h(1fr) #t-int #h(1em) #attr-set
+
+The number of iterations. Valid range is 0 to 6.
+
+Default: #typc-code("3")
+]
+
+#para-block[
+*`fill-a-pentagon`* #h(1fr) #t-fill #h(1em) #attr-set
+
+How to fill the type A pentagon tiles.
+
+Default: #typc-code("red")
+]
+
+#para-block[
+*`fill-b-pentagon`* #h(1fr) #t-fill #h(1em) #attr-set
+
+How to fill the type B pentagon tiles.
+
+Default: #typc-code("red.darken(20%)")
+]
+
+#para-block[
+*`fill-c-pentagon`* #h(1fr) #t-fill #h(1em) #attr-set
+
+How to fill the type C pentagon tiles.
+
+Default: #typc-code("red.darken(40%)")
+]
+
+#para-block[
+*`fill-diamond`* #h(1fr) #t-fill #h(1em) #attr-set
+
+How to fill the diamond tiles.
+
+Default: #typc-code("blue")
+]
+
+#para-block[
+*`fill-boat`* #h(1fr) #t-fill #h(1em) #attr-set
+
+How to fill the boat tiles.
+
+Default: #typc-code("red")
+]
+
+#para-block[
+*`fill-star`* #h(1fr) #t-fill #h(1em) #attr-set
+
+How to fill the star tiles.
+
+Default: #typc-code("yellow")
+]
+
+#para-block[
+*`stroke-edge`* #h(1fr) #t-stroke #h(1em) #attr-set
+
+How to stroke the edges of tiles.
+
+Default: #typc-code("stroke(paint: gray, thickness: 1pt, cap: \"round\", join: \"round\")")
+]
+
+#para-block[
+*`padding`* #h(1fr) #t-int #attr-or #t-float #h(1em) #attr-set
+
+The spacing around the content (in pt). Must be non-negative.
+
+Default: #typc-code("0")
+]
+
+#para-block[
+*`graph`* #h(1fr) #t-content #h(1em) #attr-ret
+
+Returned graph, contained within the `box` element.
+]
+
+
+=== `p2-a-triangle`
+
+Generate type A triangle (isosceles triangle with apex angle 72 degrees and left angle 36 degrees) tile in P2.
+The coordinates of three vertices apex ($A$), left ($L$) and right ($R$) uniquely determine the shape.
+
+#figure(
+  caption: [Type A triangle tile in P2]
+)[
+  #align(center)[
+    #box(width: 150pt, height: 100pt, {
+      place(dx: 15pt, dy: 15pt,
+        penrose-2(
+          v-ini: (p2-a-triangle(none, (-60, 0), (60, 0)),),
+          n: 0,
+          fill-a: blue.lighten(50%),
+          stroke-edge: stroke(paint: black, thickness: 1pt, cap: "round", join:  "round"),
+          stroke-arc1: stroke(paint: gradient.radial(yellow.lighten(50%), yellow.lighten(20%)), thickness: 1pt, cap: "round", join: "round"),
+          stroke-arc2: stroke(paint: gradient.radial(yellow.lighten(50%), yellow.lighten(20%)), thickness: 2pt, cap: "round", join: "round")
+        )
+      )
+      place(dx: 107pt, dy: 5pt, [$A$])
+      place(dx: 4pt, dy: 80pt, [$L$])
+      place(dx: 136pt, dy: 80pt, [$R$])
+    })
+  ]
+]
+
+#heading(bookmarked: false, outlined: false, level: 4, numbering: none)[Parameters]
+
+#fn-block[
+#fn-name[`p2-a-triangle`]`(`\
+`  `#t-none;#t-array`,`\
+`  `#t-none;#t-array`,`\
+`  `#t-none;#t-array`,`\
+`) -> `#t-array
+]
+
+#para-block[
+*`apex`* #h(1fr) #t-none #attr-or #t-array #h(1em) #attr-req #h(0.5em) #attr-pos
+
+The coordinate of vertex apex of the tile.
+
+If type is #typc-code("none"), the coordinate would be computed internally; otherwise should provided as #typc-code("(x, y)").
+
+*Note*: At most one input arguments can be #typc-code("none").
+]
+
+#para-block[
+*`left`* #h(1fr) #t-none #attr-or #t-array #h(1em) #attr-req #h(0.5em) #attr-pos
+
+The coordinate of vertex left of the tile.
+
+If type is #typc-code("none"), the coordinate would be computed internally; otherwise should provided as #typc-code("(x, y)").
+
+*Note*: At most one input arguments can be #typc-code("none").
+]
+
+#para-block[
+*`right`* #h(1fr) #t-none #attr-or #t-array #h(1em) #attr-req #h(0.5em) #attr-pos
+
+The coordinate of vertex right of the tile.
+
+If type is #typc-code("none"), the coordinate would be computed internally; otherwise should provided as #typc-code("(x, y)").
+
+*Note*: At most one input arguments can be #typc-code("none").
+]
+
+#para-block[
+*`tile`* #h(1fr) #t-array #h(1em) #attr-ret
+
+Returned parameters of tile.
+]
+
+
+=== `p2-ap-triangle`
+
+Generate type A-prime triangle (isosceles triangle with apex angle 72 degrees and left angle 72 degrees) tile in P2.
+The coordinates of three vertices apex ($A$), left ($L$) and right ($R$) uniquely determine the shape.
+
+#figure(
+  caption: [Type A-prime triangle tile in P2]
+)[
+  #align(center)[
+    #box(width: 150pt, height: 100pt, {
+      place(dx: 15pt, dy: 15pt,
+        penrose-2(
+          v-ini: (p2-ap-triangle(none, (-60, 0), (60, 0)),),
+          n: 0,
+          fill-a: blue.lighten(50%),
+          stroke-edge: stroke(paint: black, thickness: 1pt, cap: "round", join:  "round"),
+          stroke-arc1: stroke(paint: gradient.radial(yellow.lighten(50%), yellow.lighten(20%)), thickness: 1pt, cap: "round", join: "round"),
+          stroke-arc2: stroke(paint: gradient.radial(yellow.lighten(50%), yellow.lighten(20%)), thickness: 2pt, cap: "round", join: "round")
+        )
+      )
+      place(dx: 33pt, dy: 5pt, [$A$])
+      place(dx: 4pt, dy: 80pt, [$L$])
+      place(dx: 136pt, dy: 80pt, [$R$])
+    })
+  ]
+]
+
+#heading(bookmarked: false, outlined: false, level: 4, numbering: none)[Parameters]
+
+#fn-block[
+#fn-name[`p2-ap-triangle`]`(`\
+`  `#t-none;#t-array`,`\
+`  `#t-none;#t-array`,`\
+`  `#t-none;#t-array`,`\
+`) -> `#t-array
+]
+
+#para-block[
+*`apex`* #h(1fr) #t-none #attr-or #t-array #h(1em) #attr-req #h(0.5em) #attr-pos
+
+The coordinate of vertex apex of the tile.
+
+If type is #typc-code("none"), the coordinate would be computed internally; otherwise should provided as #typc-code("(x, y)").
+
+*Note*: At most one input arguments can be #typc-code("none").
+]
+
+#para-block[
+*`left`* #h(1fr) #t-none #attr-or #t-array #h(1em) #attr-req #h(0.5em) #attr-pos
+
+The coordinate of vertex left of the tile.
+
+If type is #typc-code("none"), the coordinate would be computed internally; otherwise should provided as #typc-code("(x, y)").
+
+*Note*: At most one input arguments can be #typc-code("none").
+]
+
+#para-block[
+*`right`* #h(1fr) #t-none #attr-or #t-array #h(1em) #attr-req #h(0.5em) #attr-pos
+
+The coordinate of vertex right of the tile.
+
+If type is #typc-code("none"), the coordinate would be computed internally; otherwise should provided as #typc-code("(x, y)").
+
+*Note*: At most one input arguments can be #typc-code("none").
+]
+
+#para-block[
+*`tile`* #h(1fr) #t-array #h(1em) #attr-ret
+
+Returned parameters of tile.
+]
+
+
+=== `p2-b-triangle`
+
+Generate type B triangle (isosceles triangle with apex angle 36 degrees and left angle 36 degrees) tile in P2.
+The coordinates of three vertices apex ($A$), left ($L$) and right ($R$) uniquely determine the shape.
+
+#figure(
+  caption: [Type B triangle tile in P2]
+)[
+  #align(center)[
+    #box(width: 120pt, height: 100pt, {
+      place(dx: 15pt, dy: 15pt,
+        penrose-2(
+          v-ini: (p2-b-triangle(none, (-37.082, 0), (37.082, 0)),),
+          n: 0,
+          fill-b: red.lighten(50%),
+          stroke-edge: stroke(paint: black, thickness: 1pt, cap: "round", join:  "round"),
+          stroke-arc1: stroke(paint: gradient.radial(yellow.lighten(50%), yellow.lighten(20%)), thickness: 1pt, cap: "round", join: "round"),
+          stroke-arc2: stroke(paint: gradient.radial(yellow.lighten(50%), yellow.lighten(20%)), thickness: 2pt, cap: "round", join: "round")
+        )
+      )
+      place(dx: 107pt, dy: 5pt, [$A$])
+      place(dx: 4pt, dy: 80pt, [$L$])
+      place(dx: 92pt, dy: 80pt, [$R$])
+    })
+  ]
+]
+
+#heading(bookmarked: false, outlined: false, level: 4, numbering: none)[Parameters]
+
+#fn-block[
+#fn-name[`p2-b-triangle`]`(`\
+`  `#t-none;#t-array`,`\
+`  `#t-none;#t-array`,`\
+`  `#t-none;#t-array`,`\
+`) -> `#t-array
+]
+
+#para-block[
+*`apex`* #h(1fr) #t-none #attr-or #t-array #h(1em) #attr-req #h(0.5em) #attr-pos
+
+The coordinate of vertex apex of the tile.
+
+If type is #typc-code("none"), the coordinate would be computed internally; otherwise should provided as #typc-code("(x, y)").
+
+*Note*: At most one input arguments can be #typc-code("none").
+]
+
+#para-block[
+*`left`* #h(1fr) #t-none #attr-or #t-array #h(1em) #attr-req #h(0.5em) #attr-pos
+
+The coordinate of vertex left of the tile.
+
+If type is #typc-code("none"), the coordinate would be computed internally; otherwise should provided as #typc-code("(x, y)").
+
+*Note*: At most one input arguments can be #typc-code("none").
+]
+
+#para-block[
+*`right`* #h(1fr) #t-none #attr-or #t-array #h(1em) #attr-req #h(0.5em) #attr-pos
+
+The coordinate of vertex right of the tile.
+
+If type is #typc-code("none"), the coordinate would be computed internally; otherwise should provided as #typc-code("(x, y)").
+
+*Note*: At most one input arguments can be #typc-code("none").
+]
+
+#para-block[
+*`tile`* #h(1fr) #t-array #h(1em) #attr-ret
+
+Returned parameters of tile.
+]
+
+
+=== `p2-bp-triangle`
+
+Generate type B-prime triangle (isosceles triangle with apex angle 36 degrees and left angle 108 degrees) tile in P2.
+The coordinates of three vertices apex ($A$), left ($L$) and right ($R$) uniquely determine the shape.
+
+#figure(
+  caption: [Type B-prime triangle tile in P2]
+)[
+  #align(center)[
+    #box(width: 120pt, height: 100pt, {
+      place(dx: 15pt, dy: 15pt,
+        penrose-2(
+          v-ini: (p2-bp-triangle(none, (-37.082, 0), (37.082, 0)),),
+          n: 0,
+          fill-b: red.lighten(50%),
+          stroke-edge: stroke(paint: black, thickness: 1pt, cap: "round", join:  "round"),
+          stroke-arc1: stroke(paint: gradient.radial(yellow.lighten(50%), yellow.lighten(20%)), thickness: 1pt, cap: "round", join: "round"),
+          stroke-arc2: stroke(paint: gradient.radial(yellow.lighten(50%), yellow.lighten(20%)), thickness: 2pt, cap: "round", join: "round")
+        )
+      )
+      place(dx: 10pt, dy: 5pt, [$A$])
+      place(dx: 26pt, dy: 80pt, [$L$])
+      place(dx: 115pt, dy: 80pt, [$R$])
+    })
+  ]
+]
+
+#heading(bookmarked: false, outlined: false, level: 4, numbering: none)[Parameters]
+
+#fn-block[
+#fn-name[`p2-bp-triangle`]`(`\
+`  `#t-none;#t-array`,`\
+`  `#t-none;#t-array`,`\
+`  `#t-none;#t-array`,`\
+`) -> `#t-array
+]
+
+#para-block[
+*`apex`* #h(1fr) #t-none #attr-or #t-array #h(1em) #attr-req #h(0.5em) #attr-pos
+
+The coordinate of vertex apex of the tile.
+
+If type is #typc-code("none"), the coordinate would be computed internally; otherwise should provided as #typc-code("(x, y)").
+
+*Note*: At most one input arguments can be #typc-code("none").
+]
+
+#para-block[
+*`left`* #h(1fr) #t-none #attr-or #t-array #h(1em) #attr-req #h(0.5em) #attr-pos
+
+The coordinate of vertex left of the tile.
+
+If type is #typc-code("none"), the coordinate would be computed internally; otherwise should provided as #typc-code("(x, y)").
+
+*Note*: At most one input arguments can be #typc-code("none").
+]
+
+#para-block[
+*`right`* #h(1fr) #t-none #attr-or #t-array #h(1em) #attr-req #h(0.5em) #attr-pos
+
+The coordinate of vertex right of the tile.
+
+If type is #typc-code("none"), the coordinate would be computed internally; otherwise should provided as #typc-code("(x, y)").
+
+*Note*: At most one input arguments can be #typc-code("none").
+]
+
+#para-block[
+*`tile`* #h(1fr) #t-array #h(1em) #attr-ret
+
+Returned parameters of tile.
+]
+
+
+=== `penrose-2`
+
+Generate Penrose kite and dart tiling (P2).
+
+#heading(bookmarked: false, outlined: false, level: 4, numbering: none)[Parameters]
+
+#fn-block[
+#fn-name[`penrose-2`]`(`\
+`  v-ini:` #t-array`,`\
+`  n:` #t-int`,`\
+`  fill-a:` #t-fill`,`\
+`  fill-b:` #t-fill`,`\
+`  stroke-edge:` #t-stroke`,`\
+`  stroke-arc1:` #t-stroke`,`\
+`  stroke-arc2:` #t-stroke`,`\
+`  padding:` #t-int;#t-float`,`\
+`) -> `#t-content
+]
+
+#para-block[
+*`v-ini`* #h(1fr) #t-array #h(1em)  #attr-set
+
+initial shape. Array of parameters of certain tiles.
+
+Default: #typc-code("(p2-a-triangle(none, (-200, 0), (200, 0)), p2-ap-triangle(none, (200, 0), (-200, 0)))")
+]
+
+#para-block[
+*`n`* #h(1fr) #t-int #h(1em) #attr-set
+
+The number of iterations. Valid range is 0 to 10.
+
+Default: #typc-code("3")
+]
+
+#para-block[
+*`fill-a`* #h(1fr) #t-fill #h(1em) #attr-set
+
+How to fill the type A triangle tiles.
+
+Default: #typc-code("blue")
+]
+
+#para-block[
+*`fill-b`* #h(1fr) #t-fill #h(1em) #attr-set
+
+How to fill the type B triangle tiles.
+
+Default: #typc-code("orange")
+]
+
+#para-block[
+*`stroke-edge`* #h(1fr) #t-stroke #h(1em) #attr-set
+
+How to stroke the edges of tiles.
+
+Default: #typc-code("stroke(paint: gray, thickness: 1pt, cap: \"round\", join: \"round\")")
+]
+
+#para-block[
+*`stroke-arc1`* #h(1fr) #t-stroke #h(1em) #attr-set
+
+How to stroke the edges of decorated arcs set 1.
+
+Default: #typc-code("stroke(paint: yellow, thickness: 1pt, cap: \"round\", join: \"round\")")
+]
+
+#para-block[
+*`stroke-arc2`* #h(1fr) #t-stroke #h(1em) #attr-set
+
+How to stroke the edges of decorated arcs set 2.
+
+Default: #typc-code("stroke(paint: yellow, thickness: 1pt, cap: \"round\", join: \"round\")")
+]
+
+#para-block[
+*`padding`* #h(1fr) #t-int #attr-or #t-float #h(1em) #attr-set
+
+The spacing around the content (in pt). Must be non-negative.
+
+Default: #typc-code("0")
+]
+
+#para-block[
+*`graph`* #h(1fr) #t-content #h(1em) #attr-ret
+
+Returned graph, contained within the `box` element.
+]
+
+
+=== `p3-a-triangle`
+
+Generate type A triangle (isosceles triangle with apex angle 36 degrees) tile in P3.
+The coordinates of three vertices apex ($A$), left ($L$) and right ($R$) uniquely determine the shape.
+
+#figure(
+  caption: [Type A triangle tile in P3]
+)[
+  #align(center)[
+    #box(width: 105pt, height: 140pt, {
+      place(dx: 15pt, dy: 15pt,
+        penrose-3(
+          v-ini: (p3-a-triangle(none, (-37.082, 0), (37.082, 0)),),
+          n: 0,
+          fill-a: blue.lighten(50%),
+          stroke-edge: stroke(paint: black, thickness: 1pt, cap: "round", join:  "round"),
+          stroke-arc1: stroke(paint: gradient.radial(yellow.lighten(50%), yellow.lighten(20%)), thickness: 1pt, cap: "round", join: "round"),
+          stroke-arc2: stroke(paint: gradient.radial(yellow.lighten(50%), yellow.lighten(20%)), thickness: 2pt, cap: "round", join: "round")
+        )
+      )
+      place(dx: 48pt, dy: 5pt, [$A$])
+      place(dx: 4pt, dy: 123pt, [$L$])
+      place(dx: 90pt, dy: 123pt, [$R$])
+    })
+  ]
+]
+
+#heading(bookmarked: false, outlined: false, level: 4, numbering: none)[Parameters]
+
+#fn-block[
+#fn-name[`p3-a-triangle`]`(`\
+`  `#t-none;#t-array`,`\
+`  `#t-none;#t-array`,`\
+`  `#t-none;#t-array`,`\
+`) -> `#t-array
+]
+
+#para-block[
+*`apex`* #h(1fr) #t-none #attr-or #t-array #h(1em) #attr-req #h(0.5em) #attr-pos
+
+The coordinate of vertex apex of the tile.
+
+If type is #typc-code("none"), the coordinate would be computed internally; otherwise should provided as #typc-code("(x, y)").
+
+*Note*: At most one input arguments can be #typc-code("none").
+]
+
+#para-block[
+*`left`* #h(1fr) #t-none #attr-or #t-array #h(1em) #attr-req #h(0.5em) #attr-pos
+
+The coordinate of vertex left of the tile.
+
+If type is #typc-code("none"), the coordinate would be computed internally; otherwise should provided as #typc-code("(x, y)").
+
+*Note*: At most one input arguments can be #typc-code("none").
+]
+
+#para-block[
+*`right`* #h(1fr) #t-none #attr-or #t-array #h(1em) #attr-req #h(0.5em) #attr-pos
+
+The coordinate of vertex right of the tile.
+
+If type is #typc-code("none"), the coordinate would be computed internally; otherwise should provided as #typc-code("(x, y)").
+
+*Note*: At most one input arguments can be #typc-code("none").
+]
+
+#para-block[
+*`tile`* #h(1fr) #t-array #h(1em) #attr-ret
+
+Returned parameters of tile.
+]
+
+
+=== `p3-ap-triangle`
+
+Generate type A-prime triangle (isosceles triangle with apex angle 36 degrees) tile in P3.
+The coordinates of three vertices apex ($A$), left ($L$) and right ($R$) uniquely determine the shape.
+
+#figure(
+  caption: [Type A-prime triangle tile in P3]
+)[
+  #align(center)[
+    #box(width: 105pt, height: 140pt, {
+      place(dx: 15pt, dy: 15pt,
+        penrose-3(
+          v-ini: (p3-ap-triangle(none, (-37.082, 0), (37.082, 0)),),
+          n: 0,
+          fill-a: blue.lighten(50%),
+          stroke-edge: stroke(paint: black, thickness: 1pt, cap: "round", join:  "round"),
+          stroke-arc1: stroke(paint: gradient.radial(yellow.lighten(50%), yellow.lighten(20%)), thickness: 1pt, cap: "round", join: "round"),
+          stroke-arc2: stroke(paint: gradient.radial(yellow.lighten(50%), yellow.lighten(20%)), thickness: 2pt, cap: "round", join: "round")
+        )
+      )
+      place(dx: 48pt, dy: 5pt, [$A$])
+      place(dx: 4pt, dy: 123pt, [$L$])
+      place(dx: 90pt, dy: 123pt, [$R$])
+    })
+  ]
+]
+
+#heading(bookmarked: false, outlined: false, level: 4, numbering: none)[Parameters]
+
+#fn-block[
+#fn-name[`p3-ap-triangle`]`(`\
+`  `#t-none;#t-array`,`\
+`  `#t-none;#t-array`,`\
+`  `#t-none;#t-array`,`\
+`) -> `#t-array
+]
+
+#para-block[
+*`apex`* #h(1fr) #t-none #attr-or #t-array #h(1em) #attr-req #h(0.5em) #attr-pos
+
+The coordinate of vertex apex of the tile.
+
+If type is #typc-code("none"), the coordinate would be computed internally; otherwise should provided as #typc-code("(x, y)").
+
+*Note*: At most one input arguments can be #typc-code("none").
+]
+
+#para-block[
+*`left`* #h(1fr) #t-none #attr-or #t-array #h(1em) #attr-req #h(0.5em) #attr-pos
+
+The coordinate of vertex left of the tile.
+
+If type is #typc-code("none"), the coordinate would be computed internally; otherwise should provided as #typc-code("(x, y)").
+
+*Note*: At most one input arguments can be #typc-code("none").
+]
+
+#para-block[
+*`right`* #h(1fr) #t-none #attr-or #t-array #h(1em) #attr-req #h(0.5em) #attr-pos
+
+The coordinate of vertex right of the tile.
+
+If type is #typc-code("none"), the coordinate would be computed internally; otherwise should provided as #typc-code("(x, y)").
+
+*Note*: At most one input arguments can be #typc-code("none").
+]
+
+#para-block[
+*`tile`* #h(1fr) #t-array #h(1em) #attr-ret
+
+Returned parameters of tile.
+]
+
+
+=== `p3-b-triangle`
+
+Generate type B triangle (isosceles triangle with apex angle 108 degrees) tile in P3.
+The coordinates of three vertices apex ($A$), left ($L$) and right ($R$) uniquely determine the shape.
+
+#figure(
+  caption: [Type B triangle tile in P3]
+)[
+  #align(center)[
+    #box(width: 225pt, height: 100pt, {
+      place(dx: 15pt, dy: 15pt,
+        penrose-3(
+          v-ini: (p3-b-triangle(none, (-97.082, 0), (97.082, 0)),),
+          n: 0,
+          fill-b: red.lighten(50%),
+          stroke-edge: stroke(paint: black, thickness: 1pt, cap: "round", join:  "round"),
+          stroke-arc1: stroke(paint: gradient.radial(yellow.lighten(50%), yellow.lighten(20%)), thickness: 1pt, cap: "round", join: "round"),
+          stroke-arc2: stroke(paint: gradient.radial(yellow.lighten(50%), yellow.lighten(20%)), thickness: 2pt, cap: "round", join: "round")
+        )
+      )
+      place(dx: 108pt, dy: 5pt, [$A$])
+      place(dx: 4pt, dy: 82pt, [$L$])
+      place(dx: 210pt, dy: 82pt, [$R$])
+    })
+  ]
+]
+
+#heading(bookmarked: false, outlined: false, level: 4, numbering: none)[Parameters]
+
+#fn-block[
+#fn-name[`p3-b-triangle`]`(`\
+`  `#t-none;#t-array`,`\
+`  `#t-none;#t-array`,`\
+`  `#t-none;#t-array`,`\
+`) -> `#t-array
+]
+
+#para-block[
+*`apex`* #h(1fr) #t-none #attr-or #t-array #h(1em) #attr-req #h(0.5em) #attr-pos
+
+The coordinate of vertex apex of the tile.
+
+If type is #typc-code("none"), the coordinate would be computed internally; otherwise should provided as #typc-code("(x, y)").
+
+*Note*: At most one input arguments can be #typc-code("none").
+]
+
+#para-block[
+*`left`* #h(1fr) #t-none #attr-or #t-array #h(1em) #attr-req #h(0.5em) #attr-pos
+
+The coordinate of vertex left of the tile.
+
+If type is #typc-code("none"), the coordinate would be computed internally; otherwise should provided as #typc-code("(x, y)").
+
+*Note*: At most one input arguments can be #typc-code("none").
+]
+
+#para-block[
+*`right`* #h(1fr) #t-none #attr-or #t-array #h(1em) #attr-req #h(0.5em) #attr-pos
+
+The coordinate of vertex right of the tile.
+
+If type is #typc-code("none"), the coordinate would be computed internally; otherwise should provided as #typc-code("(x, y)").
+
+*Note*: At most one input arguments can be #typc-code("none").
+]
+
+#para-block[
+*`tile`* #h(1fr) #t-array #h(1em) #attr-ret
+
+Returned parameters of tile.
+]
+
+
+=== `p3-bp-triangle`
+
+Generate type B-prime triangle (isosceles triangle with apex angle 108 degrees) tile in P3.
+The coordinates of three vertices apex ($A$), left ($L$) and right ($R$) uniquely determine the shape.
+
+#figure(
+  caption: [Type B-prime triangle tile in P3]
+)[
+  #align(center)[
+    #box(width: 225pt, height: 100pt, {
+      place(dx: 15pt, dy: 15pt,
+        penrose-3(
+          v-ini: (p3-bp-triangle(none, (-97.082, 0), (97.082, 0)),),
+          n: 0,
+          fill-b: red.lighten(50%),
+          stroke-edge: stroke(paint: black, thickness: 1pt, cap: "round", join:  "round"),
+          stroke-arc1: stroke(paint: gradient.radial(yellow.lighten(50%), yellow.lighten(20%)), thickness: 1pt, cap: "round", join: "round"),
+          stroke-arc2: stroke(paint: gradient.radial(yellow.lighten(50%), yellow.lighten(20%)), thickness: 2pt, cap: "round", join: "round")
+        )
+      )
+      place(dx: 108pt, dy: 5pt, [$A$])
+      place(dx: 4pt, dy: 82pt, [$L$])
+      place(dx: 210pt, dy: 82pt, [$R$])
+    })
+  ]
+]
+
+#heading(bookmarked: false, outlined: false, level: 4, numbering: none)[Parameters]
+
+#fn-block[
+#fn-name[`p3-bp-triangle`]`(`\
+`  `#t-none;#t-array`,`\
+`  `#t-none;#t-array`,`\
+`  `#t-none;#t-array`,`\
+`) -> `#t-array
+]
+
+#para-block[
+*`apex`* #h(1fr) #t-none #attr-or #t-array #h(1em) #attr-req #h(0.5em) #attr-pos
+
+The coordinate of vertex apex of the tile.
+
+If type is #typc-code("none"), the coordinate would be computed internally; otherwise should provided as #typc-code("(x, y)").
+
+*Note*: At most one input arguments can be #typc-code("none").
+]
+
+#para-block[
+*`left`* #h(1fr) #t-none #attr-or #t-array #h(1em) #attr-req #h(0.5em) #attr-pos
+
+The coordinate of vertex left of the tile.
+
+If type is #typc-code("none"), the coordinate would be computed internally; otherwise should provided as #typc-code("(x, y)").
+
+*Note*: At most one input arguments can be #typc-code("none").
+]
+
+#para-block[
+*`right`* #h(1fr) #t-none #attr-or #t-array #h(1em) #attr-req #h(0.5em) #attr-pos
+
+The coordinate of vertex right of the tile.
+
+If type is #typc-code("none"), the coordinate would be computed internally; otherwise should provided as #typc-code("(x, y)").
+
+*Note*: At most one input arguments can be #typc-code("none").
+]
+
+#para-block[
+*`tile`* #h(1fr) #t-array #h(1em) #attr-ret
+
+Returned parameters of tile.
+]
+
+
+=== `penrose-3`
+
+Generate Penrose rhombus tiling (P3).
+
+#heading(bookmarked: false, outlined: false, level: 4, numbering: none)[Parameters]
+
+#fn-block[
+#fn-name[`penrose-3`]`(`\
+`  v-ini:` #t-array`,`\
+`  n:` #t-int`,`\
+`  fill-a:` #t-fill`,`\
+`  fill-b:` #t-fill`,`\
+`  stroke-edge:` #t-stroke`,`\
+`  stroke-arc1:` #t-stroke`,`\
+`  stroke-arc2:` #t-stroke`,`\
+`  padding:` #t-int;#t-float`,`\
+`) -> `#t-content
+]
+
+#para-block[
+*`v-ini`* #h(1fr) #t-array #h(1em)  #attr-set
+
+initial shape. Array of parameters of certain tiles.
+
+Default: #typc-code("(p3-b-triangle(none, (-200, 0), (200, 0)), p3-bp-triangle(none, (200, 0), (-200, 0)))")
+]
+
+#para-block[
+*`n`* #h(1fr) #t-int #h(1em) #attr-set
+
+The number of iterations. Valid range is 0 to 10.
+
+Default: #typc-code("3")
+]
+
+#para-block[
+*`fill-a`* #h(1fr) #t-fill #h(1em) #attr-set
+
+How to fill the type A triangle tiles.
+
+Default: #typc-code("blue")
+]
+
+#para-block[
+*`fill-b`* #h(1fr) #t-fill #h(1em) #attr-set
+
+How to fill the type B triangle tiles.
+
+Default: #typc-code("orange")
+]
+
+#para-block[
+*`stroke-edge`* #h(1fr) #t-stroke #h(1em) #attr-set
+
+How to stroke the edges of tiles.
+
+Default: #typc-code("stroke(paint: gray, thickness: 1pt, cap: \"round\", join: \"round\")")
+]
+
+#para-block[
+*`stroke-arc1`* #h(1fr) #t-stroke #h(1em) #attr-set
+
+How to stroke the edges of decorated arcs set 1.
+
+Default: #typc-code("stroke(paint: yellow, thickness: 1pt, cap: \"round\", join: \"round\")")
+]
+
+#para-block[
+*`stroke-arc2`* #h(1fr) #t-stroke #h(1em) #attr-set
+
+How to stroke the edges of decorated arcs set 2.
+
+Default: #typc-code("stroke(paint: yellow, thickness: 1pt, cap: \"round\", join: \"round\")")
+]
+
+#para-block[
+*`padding`* #h(1fr) #t-int #attr-or #t-float #h(1em) #attr-set
+
+The spacing around the content (in pt). Must be non-negative.
+
+Default: #typc-code("0")
+]
+
+#para-block[
+*`graph`* #h(1fr) #t-content #h(1em) #attr-ret
+
+Returned graph, contained within the `box` element.
+]
+
+
+== Examples
+
+=== Penrose Tilings
+
+The original pentagonal Penrose tiling (P1).
+
+#let codes = ```
+#box(width: 300pt, height: 300pt, clip: true,
+  place(dx: -134pt, dy: 10pt,
+    penrose-1(
+      v-ini: (p1-a-pentagon(none, (-230, 0), (230, 0)),),
+      n: 3,
+      fill-a-pentagon: rgb("#8886C2"),
+      fill-b-pentagon: rgb("#8886C2").lighten(15%),
+      fill-c-pentagon: rgb("#8886C2").lighten(30%),
+      fill-diamond: rgb("#192836"),
+      fill-boat: rgb("#192836"),
+      fill-star: rgb("#192836"),
+      stroke-edge: stroke(paint: rgb("#796B36"), thickness: 2pt, cap: "round", join: "round")
+    )
+  )
+)
+```
+
+#grid(align: horizon, gutter: 10pt, columns: 1fr,
+  raw(block: true, lang: "typ", codes.text),
+  {
+    set align(center)
+    box(width: 100%, inset: 5pt, stroke: luma(50%),
+      eval(codes.text, mode: "markup", scope: (p1-a-pentagon: p1-a-pentagon, penrose-1: penrose-1))
+    )
+  }
+)
+
+The kite and dart tiling (P2).
+
+#let codes = ```
+#{
+  let unit-size = 230
+  let v-ini = ()
+  for k in range(5) {
+    let thetad = 2/5 * k * calc.pi
+    let t-a = p2-a-triangle(none, (0, 0), (unit-size*calc.cos(thetad), unit-size*calc.sin(thetad)))
+    let t-ap = p2-ap-triangle(t-a.at(1), none, (0, 0))
+    v-ini.push(t-a)
+    v-ini.push(t-ap)
+  }
+
+  box(width: 300pt, height: 300pt, clip: true,
+    place(dx: -73pt, dy: 0pt,
+      penrose-2(
+        v-ini: v-ini,
+        n: 5,
+        fill-a: gradient.radial(blue, blue.darken(30%)),
+        fill-b: gradient.radial(red, red.darken(30%)),
+        stroke-edge: stroke(paint: gradient.radial(luma(70%), luma(40%)), thickness: 2pt, cap: "round", join: "round"),
+        stroke-arc1: stroke(paint: gradient.radial(yellow.lighten(50%), yellow.lighten(20%)), thickness: 1pt, cap: "round", join: "round"),
+        stroke-arc2: stroke(paint: gradient.radial(yellow.lighten(50%), yellow.lighten(20%)), thickness: 2pt, cap: "round", join: "round")
+      )
+    )
+  )
+}
+```
+
+#grid(align: horizon, gutter: 10pt, columns: 1fr,
+  raw(block: true, lang: "typ", codes.text),
+  {
+    set align(center)
+    box(width: 100%, inset: 5pt, stroke: luma(50%),
+      eval(codes.text, mode: "markup", scope: (p2-a-triangle: p2-a-triangle, p2-ap-triangle: p2-ap-triangle, penrose-2: penrose-2))
+    )
+  }
+)
+
+The rhombus tiling (P3).
+
+#let codes = ```
+#{
+  let unit-size = 230
+  let v-ini = ()
+  for k in range(5) {
+    let thetad = 2/5 * k * calc.pi
+    let t-a = p3-a-triangle((0, 0), (unit-size*calc.cos(thetad), unit-size*calc.sin(thetad)), none)
+    let t-ap = p3-ap-triangle((0, 0), t-a.at(3), none)
+    v-ini.push(t-a)
+    v-ini.push(t-ap)
+  }
+
+  box(width: 300pt, height: 300pt, clip: true,
+    place(dx: -73pt, dy: 0pt,
+      penrose-3(
+        v-ini: v-ini,
+        n: 5,
+        fill-a: gradient.radial(blue, blue.darken(30%)),
+        fill-b: gradient.radial(red, red.darken(30%)),
+        stroke-edge: stroke(paint: gradient.radial(luma(70%), luma(40%)), thickness: 2pt, cap: "round", join: "round"),
+        stroke-arc1: stroke(paint: gradient.radial(yellow.lighten(50%), yellow.lighten(20%)), thickness: 1pt, cap: "round", join: "round"),
+        stroke-arc2: stroke(paint: gradient.radial(yellow.lighten(50%), yellow.lighten(20%)), thickness: 2pt, cap: "round", join: "round")
+      )
+    )
+  )
+}
+```
+
+#grid(align: horizon, gutter: 10pt, columns: 1fr,
+  raw(block: true, lang: "typ", codes.text),
+  {
+    set align(center)
+    box(width: 100%, inset: 5pt, stroke: luma(50%),
+      eval(codes.text, mode: "markup", scope: (p3-a-triangle: p3-a-triangle, p3-ap-triangle: p3-ap-triangle, penrose-3: penrose-3))
     )
   }
 )

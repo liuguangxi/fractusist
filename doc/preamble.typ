@@ -2,7 +2,7 @@
 
 
 #let name = "fractusist"
-#let version = "0.3.1"
+#let version = "0.3.2"
 #let date = "April 2025"
 #let author = "Guangxi Liu"
 
@@ -31,6 +31,7 @@
   (red.lighten(50%), 100%)
 )
 
+#let t-none = [#h(0.25em);#box(outset: 2pt, radius: 2pt, fill: red.lighten(60%))[`none`];#h(0.25em)]
 #let t-bool = [#h(0.25em);#box(outset: 2pt, radius: 2pt, fill: yellow.lighten(50%))[`bool`];#h(0.25em)]
 #let t-int = [#h(0.25em);#box(outset: 2pt, radius: 2pt, fill: yellow.lighten(50%))[`int`];#h(0.25em)]
 #let t-float = [#h(0.25em);#box(outset: 2pt, radius: 2pt, fill: yellow.lighten(50%))[`float`];#h(0.25em)]
